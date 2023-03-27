@@ -1,0 +1,1658 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище KollegeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cabinet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdBuilding" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Couple">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+          <Property Name="IdCabinet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoupleTask">
+          <Key>
+            <PropertyRef Name="IdCouple" />
+            <PropertyRef Name="IdTask" />
+          </Key>
+          <Property Name="IdCouple" Type="int" Nullable="false" />
+          <Property Name="IdTask" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grade" Type="int" Nullable="false" />
+          <Property Name="IdCouple" Type="int" Nullable="false" />
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Speciality" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="IdCouple" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="IdGrade" />
+          </Key>
+          <Property Name="IdCouple" Type="int" Nullable="false" />
+          <Property Name="IdStudent" Type="int" Nullable="false" />
+          <Property Name="IdGrade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="IdCouple" />
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdCouple" Type="int" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="IdGroup" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAccount" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IdTeacher" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Speciality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IdGender" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAccount" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Kollege.dbo.CurrentMonthBirthStud" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="CurrentMonthBirthStud">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+          </Key>
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Kollege.dbo.StudentsInGroup" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="StudentsInGroup">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="House" />
+            <PropertyRef Name="Группа" />
+          </Key>
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Группа" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Kollege.dbo.TaskGroup" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="TaskGroup">
+          <Property Name="Домашнее задание" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Kollege.dbo.TeacherCouples" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="TeacherCouples">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "Kollege.dbo.TeachersSpec" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="TeachersSpec">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Speciality" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="House" />
+          </Key>
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="Speciality" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Cabinet__IdBuild__440B1D61">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Cabinet" Type="Self.Cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cabinet">
+              <PropertyRef Name="IdBuilding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Couple__IdCabine__4AB81AF0">
+          <End Role="Cabinet" Type="Self.Cabinet" Multiplicity="1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cabinet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="IdCabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Couple__IdTeache__49C3F6B7">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Couple" Type="Self.Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoupleTas__IdCou__4D94879B">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="1" />
+          <End Role="CoupleTask" Type="Self.CoupleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoupleTask">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoupleTas__IdTas__4E88ABD4">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="CoupleTask" Type="Self.CoupleTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoupleTask">
+              <PropertyRef Name="IdTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdCouple__5535A963">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdStudent__5629CD9C">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdTeacher__571DF1D5">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdCoupl__59FA5E80">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdGrade__5BE2A6F2">
+          <End Role="Grade" Type="Self.Grade" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdGrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdStude__5AEE82B9">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Journal" Type="Self.Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shedule__IdCoupl__5165187F">
+          <End Role="Couple" Type="Self.Couple" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shedule__IdGroup__52593CB8">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IdGende__3F466844">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IdGroup__3E52440B">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__IdTeacher__46E78A0C">
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__IdGende__398D8EEE">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CountStudentInGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Group" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InfAboutCouples" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Group" Type="nvarchar" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="InfAboutGrades" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Patronymic" Type="nvarchar" Mode="In" />
+          <Parameter Name="Couple" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InfAboutGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Group" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InfAboutStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Fname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Lname" Type="nvarchar" Mode="In" />
+          <Parameter Name="Patronymic" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище KollegeModelContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cabinet" EntityType="Self.Cabinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Couple" EntityType="Self.Couple" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoupleTask" EntityType="Self.CoupleTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shedule" EntityType="Self.Shedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrentMonthBirthStud" EntityType="Self.CurrentMonthBirthStud" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CurrentMonthBirthStud].[Fname] AS [Fname], 
+    [CurrentMonthBirthStud].[Lname] AS [Lname], 
+    [CurrentMonthBirthStud].[Patronymic] AS [Patronymic], 
+    [CurrentMonthBirthStud].[Birthday] AS [Birthday]
+    FROM [dbo].[CurrentMonthBirthStud] AS [CurrentMonthBirthStud]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentsInGroup" EntityType="Self.StudentsInGroup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentsInGroup].[Fname] AS [Fname], 
+    [StudentsInGroup].[Lname] AS [Lname], 
+    [StudentsInGroup].[Patronymic] AS [Patronymic], 
+    [StudentsInGroup].[Birthday] AS [Birthday], 
+    [StudentsInGroup].[Number] AS [Number], 
+    [StudentsInGroup].[City] AS [City], 
+    [StudentsInGroup].[Street] AS [Street], 
+    [StudentsInGroup].[House] AS [House], 
+    [StudentsInGroup].[Aparatment] AS [Aparatment], 
+    [StudentsInGroup].[Группа] AS [Группа]
+    FROM [dbo].[StudentsInGroup] AS [StudentsInGroup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TeacherCouples" EntityType="Self.TeacherCouples" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TeacherCouples].[Name] AS [Name], 
+    [TeacherCouples].[Date] AS [Date], 
+    [TeacherCouples].[Fname] AS [Fname], 
+    [TeacherCouples].[Lname] AS [Lname], 
+    [TeacherCouples].[Patronymic] AS [Patronymic]
+    FROM [dbo].[TeacherCouples] AS [TeacherCouples]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TeachersSpec" EntityType="Self.TeachersSpec" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TeachersSpec].[Fname] AS [Fname], 
+    [TeachersSpec].[Lname] AS [Lname], 
+    [TeachersSpec].[Patronymic] AS [Patronymic], 
+    [TeachersSpec].[Birthday] AS [Birthday], 
+    [TeachersSpec].[Speciality] AS [Speciality], 
+    [TeachersSpec].[Number] AS [Number], 
+    [TeachersSpec].[City] AS [City], 
+    [TeachersSpec].[Street] AS [Street], 
+    [TeachersSpec].[House] AS [House], 
+    [TeachersSpec].[Aparatment] AS [Aparatment]
+    FROM [dbo].[TeachersSpec] AS [TeachersSpec]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Cabinet__IdBuild__440B1D61" Association="Self.FK__Cabinet__IdBuild__440B1D61">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Cabinet" EntitySet="Cabinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Couple__IdCabine__4AB81AF0" Association="Self.FK__Couple__IdCabine__4AB81AF0">
+            <End Role="Cabinet" EntitySet="Cabinet" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Couple__IdTeache__49C3F6B7" Association="Self.FK__Couple__IdTeache__49C3F6B7">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoupleTas__IdCou__4D94879B" Association="Self.FK__CoupleTas__IdCou__4D94879B">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="CoupleTask" EntitySet="CoupleTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoupleTas__IdTas__4E88ABD4" Association="Self.FK__CoupleTas__IdTas__4E88ABD4">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="CoupleTask" EntitySet="CoupleTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdCouple__5535A963" Association="Self.FK__Grade__IdCouple__5535A963">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdStudent__5629CD9C" Association="Self.FK__Grade__IdStudent__5629CD9C">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdTeacher__571DF1D5" Association="Self.FK__Grade__IdTeacher__571DF1D5">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdCoupl__59FA5E80" Association="Self.FK__Journal__IdCoupl__59FA5E80">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdGrade__5BE2A6F2" Association="Self.FK__Journal__IdGrade__5BE2A6F2">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdStude__5AEE82B9" Association="Self.FK__Journal__IdStude__5AEE82B9">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shedule__IdCoupl__5165187F" Association="Self.FK__Shedule__IdCoupl__5165187F">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shedule__IdGroup__52593CB8" Association="Self.FK__Shedule__IdGroup__52593CB8">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IdGende__3F466844" Association="Self.FK__Student__IdGende__3F466844">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IdGroup__3E52440B" Association="Self.FK__Student__IdGroup__3E52440B">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__IdTeacher__46E78A0C" Association="Self.FK__Task__IdTeacher__46E78A0C">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__IdGende__398D8EEE" Association="Self.FK__Teacher__IdGende__398D8EEE">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Account" Association="Self.FK_Student_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Account" Association="Self.FK_Teacher_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KollegeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KollegeEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CountStudentInGroup">
+          <Parameter Name="Group" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InfAboutCouples" ReturnType="Collection(KollegeModel.InfAboutCouples_Result)">
+            <Parameter Name="Group" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InfAboutGrades" ReturnType="Collection(Int32)">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="Patronymic" Mode="In" Type="String" />
+            <Parameter Name="Couple" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InfAboutGroup" ReturnType="Collection(KollegeModel.InfAboutGroup_Result)">
+          <Parameter Name="Group" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InfAboutStudent" ReturnType="Collection(KollegeModel.InfAboutStudent_Result)">
+            <Parameter Name="Fname" Mode="In" Type="String" />
+            <Parameter Name="Lname" Mode="In" Type="String" />
+            <Parameter Name="Patronymic" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KollegeModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(KollegeModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Account" EntityType="KollegeModel.Account" />
+          <EntitySet Name="Building" EntityType="KollegeModel.Building" />
+          <EntitySet Name="Cabinet" EntityType="KollegeModel.Cabinet" />
+          <EntitySet Name="Couple" EntityType="KollegeModel.Couple" />
+          <EntitySet Name="Gender" EntityType="KollegeModel.Gender" />
+          <EntitySet Name="Grade" EntityType="KollegeModel.Grade" />
+          <EntitySet Name="Group" EntityType="KollegeModel.Group" />
+          <EntitySet Name="Journal" EntityType="KollegeModel.Journal" />
+          <EntitySet Name="Role" EntityType="KollegeModel.Role" />
+          <EntitySet Name="Shedule" EntityType="KollegeModel.Shedule" />
+          <EntitySet Name="Student" EntityType="KollegeModel.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="KollegeModel.sysdiagrams" />
+          <EntitySet Name="Task" EntityType="KollegeModel.Task" />
+          <EntitySet Name="Teacher" EntityType="KollegeModel.Teacher" />
+          <EntitySet Name="CurrentMonthBirthStud" EntityType="KollegeModel.CurrentMonthBirthStud" />
+          <EntitySet Name="StudentsInGroup" EntityType="KollegeModel.StudentsInGroup" />
+          <EntitySet Name="TeacherCouples" EntityType="KollegeModel.TeacherCouples" />
+          <EntitySet Name="TeachersSpec" EntityType="KollegeModel.TeachersSpec" />
+          <AssociationSet Name="FK_Account_Role" Association="KollegeModel.FK_Account_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Account" Association="KollegeModel.FK_Student_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Account" Association="KollegeModel.FK_Teacher_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cabinet__IdBuild__440B1D61" Association="KollegeModel.FK__Cabinet__IdBuild__440B1D61">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Cabinet" EntitySet="Cabinet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Couple__IdCabine__4AB81AF0" Association="KollegeModel.FK__Couple__IdCabine__4AB81AF0">
+            <End Role="Cabinet" EntitySet="Cabinet" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Couple__IdTeache__49C3F6B7" Association="KollegeModel.FK__Couple__IdTeache__49C3F6B7">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Couple" EntitySet="Couple" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdCouple__5535A963" Association="KollegeModel.FK__Grade__IdCouple__5535A963">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdCoupl__59FA5E80" Association="KollegeModel.FK__Journal__IdCoupl__59FA5E80">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shedule__IdCoupl__5165187F" Association="KollegeModel.FK__Shedule__IdCoupl__5165187F">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IdGende__3F466844" Association="KollegeModel.FK__Student__IdGende__3F466844">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Teacher__IdGende__398D8EEE" Association="KollegeModel.FK__Teacher__IdGende__398D8EEE">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdStudent__5629CD9C" Association="KollegeModel.FK__Grade__IdStudent__5629CD9C">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdTeacher__571DF1D5" Association="KollegeModel.FK__Grade__IdTeacher__571DF1D5">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdGrade__5BE2A6F2" Association="KollegeModel.FK__Journal__IdGrade__5BE2A6F2">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shedule__IdGroup__52593CB8" Association="KollegeModel.FK__Shedule__IdGroup__52593CB8">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IdGroup__3E52440B" Association="KollegeModel.FK__Student__IdGroup__3E52440B">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdStude__5AEE82B9" Association="KollegeModel.FK__Journal__IdStude__5AEE82B9">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Journal" EntitySet="Journal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__IdTeacher__46E78A0C" Association="KollegeModel.FK__Task__IdTeacher__46E78A0C">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="CoupleTask" Association="KollegeModel.CoupleTask">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="InfAboutCouples_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="InfAboutGroup_Result">
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Patronymic" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Birthday" Nullable="false" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="House" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Aparatment" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Группа" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="InfAboutStudent_Result">
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Patronymic" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Birthday" Nullable="false" />
+          <Property Type="String" Name="Number" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Street" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="House" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Aparatment" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="KollegeModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK_Student_Account" FromRole="Account" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Account" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cabinet" Relationship="KollegeModel.FK__Cabinet__IdBuild__440B1D61" FromRole="Building" ToRole="Cabinet" />
+        </EntityType>
+        <EntityType Name="Cabinet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdBuilding" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="KollegeModel.FK__Cabinet__IdBuild__440B1D61" FromRole="Cabinet" ToRole="Building" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Couple__IdCabine__4AB81AF0" FromRole="Cabinet" ToRole="Couple" />
+        </EntityType>
+        <EntityType Name="Couple">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <Property Name="IdCabinet" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cabinet" Relationship="KollegeModel.FK__Couple__IdCabine__4AB81AF0" FromRole="Couple" ToRole="Cabinet" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Couple__IdTeache__49C3F6B7" FromRole="Couple" ToRole="Teacher" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Couple" ToRole="Grade" />
+          <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdCoupl__59FA5E80" FromRole="Couple" ToRole="Journal" />
+          <NavigationProperty Name="Shedule" Relationship="KollegeModel.FK__Shedule__IdCoupl__5165187F" FromRole="Couple" ToRole="Shedule" />
+          <NavigationProperty Name="Task" Relationship="KollegeModel.CoupleTask" FromRole="Couple" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Student__IdGende__3F466844" FromRole="Gender" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Teacher__IdGende__398D8EEE" FromRole="Gender" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade1" Type="Int32" Nullable="false" />
+          <Property Name="IdCouple" Type="Int32" Nullable="false" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Grade" ToRole="Couple" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Grade" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Grade" ToRole="Teacher" />
+          <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Grade" ToRole="Journal" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Speciality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shedule" Relationship="KollegeModel.FK__Shedule__IdGroup__52593CB8" FromRole="Group" ToRole="Shedule" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Student__IdGroup__3E52440B" FromRole="Group" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Journal">
+          <Key>
+            <PropertyRef Name="IdCouple" />
+            <PropertyRef Name="IdStudent" />
+            <PropertyRef Name="IdGrade" />
+          </Key>
+          <Property Name="IdCouple" Type="Int32" Nullable="false" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdGrade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Journal__IdCoupl__59FA5E80" FromRole="Journal" ToRole="Couple" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Journal" ToRole="Grade" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Journal__IdStude__5AEE82B9" FromRole="Journal" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Account_Role" FromRole="Role" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="IdCouple" />
+            <PropertyRef Name="IdGroup" />
+          </Key>
+          <Property Name="IdCouple" Type="Int32" Nullable="false" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Shedule__IdCoupl__5165187F" FromRole="Shedule" ToRole="Couple" />
+          <NavigationProperty Name="Group" Relationship="KollegeModel.FK__Shedule__IdGroup__52593CB8" FromRole="Shedule" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAccount" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Student_Account" FromRole="Student" ToRole="Account" />
+          <NavigationProperty Name="Gender" Relationship="KollegeModel.FK__Student__IdGende__3F466844" FromRole="Student" ToRole="Gender" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Student" ToRole="Grade" />
+          <NavigationProperty Name="Group" Relationship="KollegeModel.FK__Student__IdGroup__3E52440B" FromRole="Student" ToRole="Group" />
+          <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdStude__5AEE82B9" FromRole="Student" ToRole="Journal" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Task__IdTeacher__46E78A0C" FromRole="Task" ToRole="Teacher" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.CoupleTask" FromRole="Task" ToRole="Couple" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Speciality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="IdGender" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAccount" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Teacher" ToRole="Account" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Couple__IdTeache__49C3F6B7" FromRole="Teacher" ToRole="Couple" />
+          <NavigationProperty Name="Gender" Relationship="KollegeModel.FK__Teacher__IdGende__398D8EEE" FromRole="Teacher" ToRole="Gender" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Teacher" ToRole="Grade" />
+          <NavigationProperty Name="Task" Relationship="KollegeModel.FK__Task__IdTeacher__46E78A0C" FromRole="Teacher" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="CurrentMonthBirthStud">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+          </Key>
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="StudentsInGroup">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="House" />
+            <PropertyRef Name="Группа" />
+          </Key>
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Группа" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TeacherCouples">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TeachersSpec">
+          <Key>
+            <PropertyRef Name="Fname" />
+            <PropertyRef Name="Lname" />
+            <PropertyRef Name="Patronymic" />
+            <PropertyRef Name="Birthday" />
+            <PropertyRef Name="Speciality" />
+            <PropertyRef Name="Number" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Street" />
+            <PropertyRef Name="House" />
+          </Key>
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Speciality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Account_Role">
+          <End Type="KollegeModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="KollegeModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Account">
+          <End Type="KollegeModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Account">
+          <End Type="KollegeModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cabinet__IdBuild__440B1D61">
+          <End Type="KollegeModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="KollegeModel.Cabinet" Role="Cabinet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cabinet">
+              <PropertyRef Name="IdBuilding" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Couple__IdCabine__4AB81AF0">
+          <End Type="KollegeModel.Cabinet" Role="Cabinet" Multiplicity="1" />
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cabinet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="IdCabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Couple__IdTeache__49C3F6B7">
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Couple">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdCouple__5535A963">
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdCoupl__59FA5E80">
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
+          <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shedule__IdCoupl__5165187F">
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
+          <End Type="KollegeModel.Shedule" Role="Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couple">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IdGende__3F466844">
+          <End Type="KollegeModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Teacher__IdGende__398D8EEE">
+          <End Type="KollegeModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdStudent__5629CD9C">
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdTeacher__571DF1D5">
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdGrade__5BE2A6F2">
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdGrade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shedule__IdGroup__52593CB8">
+          <End Type="KollegeModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="KollegeModel.Shedule" Role="Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IdGroup__3E52440B">
+          <End Type="KollegeModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdStude__5AEE82B9">
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__IdTeacher__46E78A0C">
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="KollegeModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CoupleTask">
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
+          <End Type="KollegeModel.Task" Role="Task" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KollegeModelContainer" CdmEntityContainer="KollegeEntities">
+          <FunctionImportMapping FunctionImportName="CountStudentInGroup" FunctionName="Хранилище KollegeModel.CountStudentInGroup" />
+          <FunctionImportMapping FunctionImportName="InfAboutCouples" FunctionName="Хранилище KollegeModel.InfAboutCouples">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KollegeModel.InfAboutCouples_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InfAboutGrades" FunctionName="Хранилище KollegeModel.InfAboutGrades" />
+          <FunctionImportMapping FunctionImportName="InfAboutGroup" FunctionName="Хранилище KollegeModel.InfAboutGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KollegeModel.InfAboutGroup_Result">
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+                <ScalarProperty Name="Группа" ColumnName="Группа" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InfAboutStudent" FunctionName="Хранилище KollegeModel.InfAboutStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KollegeModel.InfAboutStudent_Result">
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище KollegeModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище KollegeModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище KollegeModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище KollegeModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KollegeModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище KollegeModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KollegeModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище KollegeModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище KollegeModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="KollegeModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Building">
+            <EntityTypeMapping TypeName="KollegeModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cabinet">
+            <EntityTypeMapping TypeName="KollegeModel.Cabinet">
+              <MappingFragment StoreEntitySet="Cabinet">
+                <ScalarProperty Name="IdBuilding" ColumnName="IdBuilding" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Couple">
+            <EntityTypeMapping TypeName="KollegeModel.Couple">
+              <MappingFragment StoreEntitySet="Couple">
+                <ScalarProperty Name="IdCabinet" ColumnName="IdCabinet" />
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="KollegeModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grade">
+            <EntityTypeMapping TypeName="KollegeModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
+                <ScalarProperty Name="Grade1" ColumnName="Grade" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="KollegeModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Journal">
+            <EntityTypeMapping TypeName="KollegeModel.Journal">
+              <MappingFragment StoreEntitySet="Journal">
+                <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="KollegeModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shedule">
+            <EntityTypeMapping TypeName="KollegeModel.Shedule">
+              <MappingFragment StoreEntitySet="Shedule">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="KollegeModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KollegeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="KollegeModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teacher">
+            <EntityTypeMapping TypeName="KollegeModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrentMonthBirthStud">
+            <EntityTypeMapping TypeName="KollegeModel.CurrentMonthBirthStud">
+              <MappingFragment StoreEntitySet="CurrentMonthBirthStud">
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsInGroup">
+            <EntityTypeMapping TypeName="KollegeModel.StudentsInGroup">
+              <MappingFragment StoreEntitySet="StudentsInGroup">
+                <ScalarProperty Name="Группа" ColumnName="Группа" />
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherCouples">
+            <EntityTypeMapping TypeName="KollegeModel.TeacherCouples">
+              <MappingFragment StoreEntitySet="TeacherCouples">
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeachersSpec">
+            <EntityTypeMapping TypeName="KollegeModel.TeachersSpec">
+              <MappingFragment StoreEntitySet="TeachersSpec">
+                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CoupleTask" TypeName="KollegeModel.CoupleTask" StoreEntitySet="CoupleTask">
+            <EndProperty Name="Task">
+              <ScalarProperty Name="Id" ColumnName="IdTask" />
+            </EndProperty>
+            <EndProperty Name="Couple">
+              <ScalarProperty Name="Id" ColumnName="IdCouple" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

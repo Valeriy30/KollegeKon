@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="62959f51643c49ebb64534d8a205c482" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="KollegeModel.Account" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="KollegeModel.Building" Width="1.5" PointX="6.75" PointY="1.625" />
+        <EntityTypeShape EntityType="KollegeModel.Cabinet" Width="1.5" PointX="9" PointY="0.75" />
+        <EntityTypeShape EntityType="KollegeModel.Couple" Width="1.5" PointX="11.25" PointY="5.25" />
+        <EntityTypeShape EntityType="KollegeModel.Gender" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="KollegeModel.Grade" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="KollegeModel.Group" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="KollegeModel.Journal" Width="1.5" PointX="13.5" PointY="5.875" />
+        <EntityTypeShape EntityType="KollegeModel.Role" Width="1.5" PointX="1.5" PointY="12.5" />
+        <EntityTypeShape EntityType="KollegeModel.Shedule" Width="1.5" PointX="13.5" PointY="9" />
+        <EntityTypeShape EntityType="KollegeModel.Student" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="KollegeModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="1.25" />
+        <EntityTypeShape EntityType="KollegeModel.Task" Width="1.5" PointX="13.5" PointY="3" />
+        <EntityTypeShape EntityType="KollegeModel.Teacher" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="KollegeModel.CurrentMonthBirthStud" Width="1.5" PointX="3.75" PointY="10.25" />
+        <EntityTypeShape EntityType="KollegeModel.StudentsInGroup" Width="1.5" PointX="5.75" PointY="10.25" />
+        <EntityTypeShape EntityType="KollegeModel.TeacherCouples" Width="1.5" PointX="7.75" PointY="10.25" />
+        <EntityTypeShape EntityType="KollegeModel.TeachersSpec" Width="1.5" PointX="9.75" PointY="10.25" />
+        <AssociationConnector Association="KollegeModel.FK_Account_Role" />
+        <AssociationConnector Association="KollegeModel.FK_Student_Account" />
+        <AssociationConnector Association="KollegeModel.FK_Teacher_Account" />
+        <AssociationConnector Association="KollegeModel.FK__Cabinet__IdBuild__440B1D61" />
+        <AssociationConnector Association="KollegeModel.FK__Couple__IdCabine__4AB81AF0" />
+        <AssociationConnector Association="KollegeModel.FK__Couple__IdTeache__49C3F6B7" />
+        <AssociationConnector Association="KollegeModel.FK__Grade__IdCouple__5535A963" />
+        <AssociationConnector Association="KollegeModel.FK__Journal__IdCoupl__59FA5E80" />
+        <AssociationConnector Association="KollegeModel.FK__Shedule__IdCoupl__5165187F" />
+        <AssociationConnector Association="KollegeModel.FK__Student__IdGende__3F466844" />
+        <AssociationConnector Association="KollegeModel.FK__Teacher__IdGende__398D8EEE" />
+        <AssociationConnector Association="KollegeModel.FK__Grade__IdStudent__5629CD9C" />
+        <AssociationConnector Association="KollegeModel.FK__Grade__IdTeacher__571DF1D5" />
+        <AssociationConnector Association="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" />
+        <AssociationConnector Association="KollegeModel.FK__Shedule__IdGroup__52593CB8" />
+        <AssociationConnector Association="KollegeModel.FK__Student__IdGroup__3E52440B" />
+        <AssociationConnector Association="KollegeModel.FK__Journal__IdStude__5AEE82B9" />
+        <AssociationConnector Association="KollegeModel.FK__Task__IdTeacher__46E78A0C" />
+        <AssociationConnector Association="KollegeModel.CoupleTask" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
