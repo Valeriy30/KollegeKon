@@ -1,6 +1,9 @@
-﻿using System;
+﻿using KollegeKon.DB;
+using KollegeKon.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static KollegeKon.ClassHelper.EFClass;
-
 namespace KollegeKon.Windows
 {
     /// <summary>
@@ -24,51 +26,55 @@ namespace KollegeKon.Windows
         public RegistrationWindow()
         {
             InitializeComponent();
+            
+            var query =
+           from Student in context.Student
+           select new { Student.Fname, Student.Lname,Student.Patronymic, Student.Birthday, Student.IdGroup,Student.Email,Student.Number,Student.IdGender,Student.City, Student.Street, Student.House,Student.Aparatment, Student.IdAccount };
+
+            
+           
         }
 
-        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        private void btn_ItemSourceCick(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbLogin.Text))
+            Button but = (Button)sender;
+            switch(but.Name)
             {
-                MessageBox.Show("Логин не может быть пустым");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(tbFname.Text))
-            {
-                MessageBox.Show("Имя не может быть пустым");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(tbLname.Text))
-            {
-                MessageBox.Show("Фамилия не может быть пустым");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(pbPass.Password))
-            {
-                MessageBox.Show("Пароль не может быть пустым");
+                
+                case  "StudBtn":
+                    Hide();
+                    StudentPage student = new StudentPage();
+                    mainFrame.Navigate(student);
+                    break;
 
-                return;
             }
-            if (string.IsNullOrWhiteSpace(dpBirthDay.Text))
-            {
+            SpDg.Visibility = Visibility.Visible;
+        }
+        public void Hide()
+        {
+            RoleBtn.Visibility = Visibility.Hidden;
+            StudBtn.Visibility = Visibility.Hidden;
+            Teachbtn.Visibility = Visibility.Hidden;
+            GradeBtn.Visibility = Visibility.Hidden;
+            TaskBtn.Visibility = Visibility.Hidden;
+            BuildBtn.Visibility = Visibility.Hidden;
+            CabinetBtn.Visibility = Visibility.Hidden;
+            AccountBtn.Visibility = Visibility.Hidden;
+            CoupleBtn.Visibility = Visibility.Hidden;
 
-                MessageBox.Show("Дата не может быть пустой");
-                return;
-            }
+        }
+        public void ReHide()
+        {
+            RoleBtn.Visibility = Visibility.Visible;
+            StudBtn.Visibility = Visibility.Visible;
+            Teachbtn.Visibility = Visibility.Visible;
+            GradeBtn.Visibility = Visibility.Visible;
+            TaskBtn.Visibility = Visibility.Visible;
+            BuildBtn.Visibility = Visibility.Visible;
+            CabinetBtn.Visibility = Visibility.Visible;
+            AccountBtn.Visibility = Visibility.Visible;
+            CoupleBtn.Visibility = Visibility.Visible;
 
-            var authUser = context.Account.ToList()
-                .Where(i => i.Login == tbLogin.Text && i.Password == pbPass.Password)
-                .FirstOrDefault();
-            if (authUser != null)
-            {
-                MessageBox.Show("Логин занят");
-                return;
-            }
-            DB.Account acc = new DB.Account();
-            acc.Login = tbLogin.Text;
-            acc.Password = pbPass.Password;
-            context.SaveChanges();
-            MessageBox.Show("Ok");
         }
     }
 }

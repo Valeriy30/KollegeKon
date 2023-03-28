@@ -7,157 +7,152 @@
         mc:Ignorable="d"
         Title="RegistrationWindow" Height="750" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock
+        <StackPanel>
+
+
+            <WrapPanel
+            HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="50"
+            >
+                <Button
+                x:Name="Teachbtn"
+                Height="60"
+                Width="100"
+                Content="Препадаватели"
+                Margin="25 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="StudBtn"
+                Height="60"
+                Width="100"
+                Content="Студенты"
+                    Margin="50 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="CoupleBtn"
+                Height="60"
+                Width="100"
+                Content="Пары"
+                    Margin="50 0 25 0" Click="btn_ItemSourceCick">
+
+                </Button>
+            </WrapPanel>
+
+            <WrapPanel
+                Margin="50"
+            HorizontalAlignment="Center"
+            >
+                <Button
+                x:Name="TaskBtn"
+                Height="60"
+                Width="100"
+                Content="Задания"
+                Margin="25 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="GradeBtn"
+                Height="60"
+                Width="100"
+                Content="Оценки"
+                    Margin="50 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="BuildBtn"
+                Height="60"
+                Width="100"
+                Content="Здания"
+                    Margin="50 0 25 0" Click="btn_ItemSourceCick">
+
+                </Button>
+            </WrapPanel>
+            <WrapPanel
+                Margin="50"
+            HorizontalAlignment="Center"
+            >
+                <Button
+                x:Name="CabinetBtn"
+                Height="60"
+                Width="100"
+                Content="Кабинеты"
+                Margin="25 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="AccountBtn"
+                Height="60"
+                Width="100"
+                Content="Аккаунты"
+                    Margin="50 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="RoleBtn"
+                Height="60"
+                Width="100"
+                Content="Роли"
+                    Margin="50 0 25 0" Click="btn_ItemSourceCick">
+
+                </Button>
+            </WrapPanel>
+
+        </StackPanel>
+        <StackPanel
+            x:Name="SpDg"
+            Visibility="Hidden"
+        >
+        <TextBlock
                 
                 Height="50"
-                Width="200"
-                Text="Регистрация"
-                VerticalAlignment="Center"
+                Width="400"
+                Text="Регистрация нового пользователя"
+                VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 FontSize="20"
                 Margin="10 10 10 50"
                 TextAlignment="Center"
                 FontWeight="Bold"
-                ></TextBlock>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Введите ваше имя"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-            <TextBox
-                x:Name="tbFname"
-                Height="40"
-                Width="200"
-                TextAlignment="Center"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            </TextBox>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Введите вашу фамилию"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-            <TextBox
-                x:Name="tbLname"
-                Height="40"
-                Width="200"
-                TextAlignment="Center"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            </TextBox>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Введите ваше отчество"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-            <TextBox
-                x:Name="tbPatronymic"
-                Height="40"
-                Width="200"
-                TextAlignment="Center"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            </TextBox>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Введите вашу дату рождения"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-
-            <DatePicker x:Name="dpBirthDay"
-                FontSize="20"
-                Height="40"
-                Width="200"
                 >
-            </DatePicker>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Введите ваш номер телефона"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-
-            <TextBox
-                x:Name="tbPhone"
-                Height="40"
-                Width="200"
-                TextAlignment="Center"
-                FontSize="10"
-                VerticalAlignment="Center"
+            
+        </TextBlock>
+            <Frame
+                x:Name="mainFrame"
+                Height="550"
+                Width="700"
+                >
+                
+            </Frame>
+            <WrapPanel
                 HorizontalAlignment="Center">
-            </TextBox>
-
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Придумайте логин"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-            <TextBox
-                x:Name="tbLogin"
-                Height="40"
-                Width="200"
-                TextAlignment="Center"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            </TextBox>
-            <TextBlock
-                Height="20"
-                Width="200"
-                Text="Придумайте пароль"
-                FontSize="14"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                ></TextBlock>
-            <PasswordBox
-                x:Name="pbPass"
-                Height="40"
-                Width="200"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            </PasswordBox>
             <Button
-                x:Name="btnAuth"
-                Content="Зарегистрироваться"
-                Height="40"
-                Width="200"
-                Margin="20" Click="btnAuth_Click" 
-                >
+                x:Name="AddBtn"
+                Height="30"
+                Width="100"
+                Content="Добавить"
+                Margin="25 0 50 0">
+                
             </Button>
-            <TextBlock
-                x:Name="tblReg"
-                 Height="20"
-                Width="200"
-                Text="Есть аккаунт? Войти"
-                FontSize="10"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                TextAlignment="Center"
-                Margin="10 50 10 0" 
-                ></TextBlock>
-
+                <Button
+                x:Name="saveBtn"
+                Height="30"
+                Width="100"
+                Content="Сохранить"
+                    Margin="50 0 50 0">
+                
+            </Button>  
+                <Button
+                x:Name="delBtn"
+                Height="30"
+                Width="100"
+                Content="Удалить"
+                    Margin="50 0 25 0">
+                
+            </Button>
+            </WrapPanel>
         </StackPanel>
     </Grid>
 </Window>

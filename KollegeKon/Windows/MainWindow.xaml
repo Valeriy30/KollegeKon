@@ -8,17 +8,5 @@
         Title="MainWindow" Height="500" Width="800">
     <Grid>
         
-            <TextBlock
-                Height="50"
-                Width="200"
-                Text="Главное окно"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                FontSize="20"
-                Margin="10 10 10 50"
-                TextAlignment="Center"
-                FontWeight="Bold"
-                ></TextBlock>
-            
     </Grid>
 </Window>

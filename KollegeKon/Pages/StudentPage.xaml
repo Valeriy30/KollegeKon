@@ -1,0 +1,67 @@
+﻿<Page x:Class="KollegeKon.Pages.StudentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KollegeKon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="StudentPage">
+
+    <Grid>
+        <StackPanel>
+        <DataGrid
+        x:Name="dgStudent"    
+        Height="350"
+        Width="600"
+        Margin="0 0 0 10"  
+         AutoGenerateColumns="False" SelectedItem="{Binding SelectedStudent}" 
+            ItemsSource="{Binding View}"
+         >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Fname}" Header="Имя" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Lname}" Header="Фамилия" Width="90"/>
+                <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Birthday}" Header="Дата" Width="150"/>
+                <DataGridTextColumn Binding="{Binding IdGroup}" Header="Номер группы" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Почта" Width="130"/>
+                <DataGridTextColumn Binding="{Binding Number}" Header="Номер телефона" Width="100"/>
+                <DataGridTextColumn Binding="{Binding IdGender}" Header="Номер гендера" Width="50"/>
+                <DataGridTextColumn Binding="{Binding City}" Header="Город" Width="90"/>
+                <DataGridTextColumn Binding="{Binding Street}" Header="Улица" Width="120"/>
+                <DataGridTextColumn Binding="{Binding House}" Header="Дом" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Aparatment}" Header="Квартира" Width="50"/>
+                <DataGridTextColumn Binding="{Binding IdAccount}" Header="Номер акканута" Width="50"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+            <WrapPanel>
+        <Button
+                x:Name="AddBtn"
+                Height="30"
+                Width="100"
+                Content="Добавить"
+                Margin="25 0 50 0">
+
+        </Button>
+        <Button
+                x:Name="saveBtn"
+                Height="30"
+                Width="100"
+                Content="Сохранить"
+                    Margin="50 0 50 0">
+
+        </Button>
+        <Button
+                x:Name="delBtn"
+                Height="30"
+                Width="100"
+                Content="Удалить"
+                    Margin="50 0 25 0">
+
+        </Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Page>
