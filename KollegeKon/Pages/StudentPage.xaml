@@ -47,14 +47,13 @@
 
         </Button>
         <Button
-                x:Name="saveBtn"
+                x:Name="editBtn"
                 Height="30"
                 Width="100"
-                Content="Сохранить"
-                    Margin="50 0 50 0">
-
-        </Button>
-        <Button
+                Content="Изменить"
+                    Margin="50 0 50 0" Click="editBtn_Click"
+            />
+                <Button
                 x:Name="delBtn"
                 Height="30"
                 Width="100"

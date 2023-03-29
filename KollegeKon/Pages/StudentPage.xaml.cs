@@ -60,5 +60,10 @@ namespace KollegeKon.Pages
                 }
             }
         }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EFClass.mainFrame.Navigate(new AddEditStudentPage());
+        }
     }
  }
