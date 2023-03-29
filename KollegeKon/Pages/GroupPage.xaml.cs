@@ -17,14 +17,15 @@ using static KollegeKon.ClassHelper.EFClass;
 namespace KollegeKon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для CouplePage.xaml
+    /// Логика взаимодействия для GroupPage.xaml
     /// </summary>
-    public partial class CouplePage : Page
+    public partial class GroupPage : Page
     {
-        public CouplePage()
+        public GroupPage()
         {
             InitializeComponent();
-            dgCouple.ItemsSource = context.Couple.ToList();
+            dgGroup.ItemsSource = context.Group.ToList();
         }
+
     }
 }

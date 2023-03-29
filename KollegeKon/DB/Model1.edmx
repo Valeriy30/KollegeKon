@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
@@ -116,10 +116,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="IdGender" Type="int" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="IdAccount" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -153,10 +150,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Number" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="IdGender" Type="int" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="IdAccount" Type="int" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
@@ -828,7 +822,7 @@
             <End Role="Couple" EntitySet="Couple" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="InfAboutCouples_Result">
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Date" Nullable="false" />
@@ -871,7 +865,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
@@ -996,10 +990,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="IdAccount" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Student_Account" FromRole="Student" ToRole="Account" />
           <NavigationProperty Name="Gender" Relationship="KollegeModel.FK__Student__IdGende__3F466844" FromRole="Student" ToRole="Gender" />
@@ -1040,10 +1031,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="IdGender" Type="Int32" Nullable="false" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Aparatment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="IdAccount" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Teacher" ToRole="Account" />
           <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Couple__IdTeache__49C3F6B7" FromRole="Teacher" ToRole="Couple" />
@@ -1343,7 +1331,7 @@
           <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
           <End Type="KollegeModel.Task" Role="Task" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1515,10 +1503,7 @@
             <EntityTypeMapping TypeName="KollegeModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
-                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
-                <ScalarProperty Name="House" ColumnName="House" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1555,10 +1540,7 @@
             <EntityTypeMapping TypeName="KollegeModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
-                <ScalarProperty Name="Aparatment" ColumnName="Aparatment" />
-                <ScalarProperty Name="House" ColumnName="House" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="IdGender" ColumnName="IdGender" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1632,7 +1614,7 @@
               <ScalarProperty Name="Id" ColumnName="IdCouple" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

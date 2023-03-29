@@ -30,10 +30,7 @@ namespace KollegeKon.DB
         public string Email { get; set; }
         public string Number { get; set; }
         public int IdGender { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public string House { get; set; }
-        public string Aparatment { get; set; }
+        public string Address { get; set; }
         public Nullable<int> IdAccount { get; set; }
     
         public virtual Account Account { get; set; }

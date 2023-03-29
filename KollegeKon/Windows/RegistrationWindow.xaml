@@ -5,9 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KollegeKon.Windows"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="750" Width="800">
+        Title="RegistrationWindow" Height="800" Width="800">
     <Grid>
-        <StackPanel>
+        <Button
+            x:Name="BackBtn"
+            Height="40"
+            Width="80"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="20"
+            Content="Назад"
+            Visibility="Hidden" Click="BackBtn_Click"
+            >
+            
+        </Button>
+        <StackPanel
+            VerticalAlignment="Center">
 
 
             <WrapPanel
@@ -16,7 +29,7 @@
                 Margin="50"
             >
                 <Button
-                x:Name="Teachbtn"
+                x:Name="TeachBtn"
                 Height="60"
                 Width="100"
                 Content="Препадаватели"
@@ -99,6 +112,35 @@
 
                 </Button>
             </WrapPanel>
+            <WrapPanel
+                Margin="50"
+            HorizontalAlignment="Center"
+            >
+                <Button
+                x:Name="SheduleBtn"
+                Height="60"
+                Width="100"
+                Content="Расписание"
+                Margin="25 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="GroupBtn"
+                Height="60"
+                Width="100"
+                Content="Группы"
+                    Margin="50 0 50 0" Click="btn_ItemSourceCick">
+
+                </Button>
+                <Button
+                x:Name="JournalBtn"
+                Height="60"
+                Width="100"
+                Content="Журнал"
+                    Margin="50 0 25 0" Click="btn_ItemSourceCick">
+
+                </Button>
+            </WrapPanel>
 
         </StackPanel>
         <StackPanel
@@ -121,37 +163,15 @@
         </TextBlock>
             <Frame
                 x:Name="mainFrame"
-                Height="550"
+                Height="850"
                 Width="700"
+                NavigationUIVisibility="Hidden"
                 >
                 
             </Frame>
             <WrapPanel
                 HorizontalAlignment="Center">
-            <Button
-                x:Name="AddBtn"
-                Height="30"
-                Width="100"
-                Content="Добавить"
-                Margin="25 0 50 0">
-                
-            </Button>
-                <Button
-                x:Name="saveBtn"
-                Height="30"
-                Width="100"
-                Content="Сохранить"
-                    Margin="50 0 50 0">
-                
-            </Button>  
-                <Button
-                x:Name="delBtn"
-                Height="30"
-                Width="100"
-                Content="Удалить"
-                    Margin="50 0 25 0">
-                
-            </Button>
+           
             </WrapPanel>
         </StackPanel>
     </Grid>
