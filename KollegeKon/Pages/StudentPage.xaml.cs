@@ -30,13 +30,17 @@ namespace KollegeKon.Pages
         {
             InitializeComponent();
             dgStudent.ItemsSource = context.Student.ToList();
+            AddEditStudentPage edit = new AddEditStudentPage();
+           
+            
+
 
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-
+            Idchange = 0;
 
             EFClass.mainFrame.Navigate(new AddEditStudentPage());
 
@@ -44,6 +48,7 @@ namespace KollegeKon.Pages
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
+            Idchange = 0;
             var deleteStud = dgStudent.SelectedItems.Cast<Student>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
@@ -56,14 +61,27 @@ namespace KollegeKon.Pages
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message.ToString());
+                    
+                    
                 }
             }
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-            EFClass.mainFrame.Navigate(new AddEditStudentPage());
+            Change = true;
+            AddEditStudentPage edit = new AddEditStudentPage();
+           
+            EFClass.mainFrame.Navigate(edit);
+           
+
+        }
+
+        private void dgStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBlock tbCH = dgStudent.Columns[0].GetCellContent(dgStudent.Items[dgStudent.SelectedIndex]) as TextBlock;
+            Idchange = Convert.ToInt32(tbCH.Text);
+            
         }
     }
  }

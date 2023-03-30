@@ -16,7 +16,7 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedGroup}" 
-            ItemsSource="{Binding View}"
+            ItemsSource="{Binding View}" SelectionChanged="dgGroup_SelectionChanged"
          >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
@@ -33,15 +33,15 @@
                 Height="30"
                 Width="100"
                 Content="Добавить"
-                Margin="25 0 50 0">
+                Margin="25 0 50 0" Click="AddBtn_Click">
 
                 </Button>
                 <Button
                 x:Name="saveBtn"
                 Height="30"
                 Width="100"
-                Content="Сохранить"
-                    Margin="50 0 50 0">
+                Content="Изменить"
+                    Margin="50 0 50 0" Click="saveBtn_Click">
 
                 </Button>
                 <Button
@@ -49,7 +49,7 @@
                 Height="30"
                 Width="100"
                 Content="Удалить"
-                    Margin="50 0 25 0">
+                    Margin="50 0 25 0" Click="delBtn_Click">
 
                 </Button>
             </WrapPanel>

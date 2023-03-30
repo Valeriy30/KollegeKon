@@ -12,6 +12,8 @@ namespace KollegeKon.ClassHelper
     {
         public static KollegeEntities context { get; set; } = new KollegeEntities();
         public static Frame mainFrame { get; set; }
+        public static int Idchange = 0;
+        public static bool Change = false ;
     
     }
 }

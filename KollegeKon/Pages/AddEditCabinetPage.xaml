@@ -1,0 +1,84 @@
+﻿<Page x:Class="KollegeKon.Pages.AddEditCabinetPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:KollegeKon.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditCabinetPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+            
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите номер кабинета"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+            <TextBox
+                x:Name="tbCabinet"
+                Height="40"
+                Width="200"
+                Text="{Binding Number,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите номер этажа"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+            <TextBox
+                x:Name="tbfloor"
+                Height="40"
+                Width="200"
+                Text="{Binding Floor,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+            
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите тип кабинета"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+
+            <TextBox
+                x:Name="tbType"
+                Height="40"
+                Width="200"
+                Text="{Binding Type,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+            <Button
+                x:Name="btnAuth"
+                Content="Сохранить"
+                Height="40"
+                Width="200"
+                Margin="20" Click="btnAuth_Click" 
+                >
+            </Button>
+
+
+        </StackPanel>
+    </Grid>
+</Page>

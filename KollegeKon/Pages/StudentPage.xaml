@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KollegeKon.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="600"
+      d:DesignHeight="900" d:DesignWidth="600"
       Title="StudentPage">
 
     <Grid>
@@ -16,7 +16,7 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedStudent}" 
-            ItemsSource="{Binding View}"
+            ItemsSource="{Binding View}" SelectionChanged="dgStudent_SelectionChanged"
          >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
@@ -28,10 +28,7 @@
                 <DataGridTextColumn Binding="{Binding Email}" Header="Почта" Width="130"/>
                 <DataGridTextColumn Binding="{Binding Number}" Header="Номер телефона" Width="100"/>
                 <DataGridTextColumn Binding="{Binding IdGender}" Header="Номер гендера" Width="50"/>
-                <DataGridTextColumn Binding="{Binding City}" Header="Город" Width="90"/>
-                <DataGridTextColumn Binding="{Binding Street}" Header="Улица" Width="120"/>
-                <DataGridTextColumn Binding="{Binding House}" Header="Дом" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Aparatment}" Header="Квартира" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="120"/>
                 <DataGridTextColumn Binding="{Binding IdAccount}" Header="Номер акканута" Width="50"/>
                 
             </DataGrid.Columns>

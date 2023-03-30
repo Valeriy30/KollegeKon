@@ -26,5 +26,10 @@ namespace KollegeKon.Pages
             InitializeComponent();
             dgRole.ItemsSource = context.Role.ToList();
         }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

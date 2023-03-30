@@ -67,8 +67,14 @@
     <Compile Include="Pages\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddEditCabinetPage.xaml.cs">
+      <DependentUpon>AddEditCabinetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddEditStudentPage.xaml.cs">
       <DependentUpon>AddEditStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditTeacherPage.xaml.cs">
+      <DependentUpon>AddEditTeacherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BuildingPage.xaml.cs">
       <DependentUpon>BuildingPage.xaml</DependentUpon>
@@ -113,7 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddEditCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddEditStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditTeacherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

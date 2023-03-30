@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static KollegeKon.ClassHelper.EFClass;
 
 namespace KollegeKon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для GroupPage.xaml
+    /// Логика взаимодействия для AddEditCouplePage.xaml
     /// </summary>
-    public partial class GroupPage : Page
+    public partial class AddEditCouplePage : Page
     {
-        public GroupPage()
+        public AddEditCouplePage()
         {
             InitializeComponent();
-            dgGroup.ItemsSource = context.Group.ToList();
-        }
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

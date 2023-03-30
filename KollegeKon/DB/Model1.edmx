@@ -13,6 +13,8 @@
           <Property Name="Login" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="LastEntrance" Type="date" />
+          <Property Name="TimeOnsystem" Type="int" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -869,6 +871,8 @@
           <Property Name="Login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="LastEntrance" Type="DateTime" Precision="0" />
+          <Property Name="TimeOnsystem" Type="Int32" />
           <NavigationProperty Name="Role" Relationship="KollegeModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK_Student_Account" FromRole="Account" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Account" ToRole="Teacher" />
@@ -1405,6 +1409,8 @@
           <EntitySetMapping Name="Account">
             <EntityTypeMapping TypeName="KollegeModel.Account">
               <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="TimeOnsystem" ColumnName="TimeOnsystem" />
+                <ScalarProperty Name="LastEntrance" ColumnName="LastEntrance" />
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
