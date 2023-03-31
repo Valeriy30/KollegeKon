@@ -28,10 +28,8 @@
                     <DataGridTextColumn Binding="{Binding Email}" Header="Почта" Width="130"/>
                     <DataGridTextColumn Binding="{Binding Number}" Header="Номер телефона" Width="100"/>
                     <DataGridTextColumn Binding="{Binding IdGender}" Header="Номер гендера" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding City}" Header="Город" Width="90"/>
-                    <DataGridTextColumn Binding="{Binding Street}" Header="Улица" Width="120"/>
-                    <DataGridTextColumn Binding="{Binding House}" Header="Дом" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Aparatment}" Header="Квартира" Width="50"/>
+                    <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="90"/>
+                    
                     <DataGridTextColumn Binding="{Binding IdAccount}" Header="Номер акканута" Width="50"/>
 
                 </DataGrid.Columns>
@@ -50,7 +48,7 @@
                 x:Name="saveBtn"
                 Height="30"
                 Width="100"
-                Content="Сохранить"
+                Content="Изменить"
                     Margin="50 0 50 0" Click="saveBtn_Click">
 
                 </Button>

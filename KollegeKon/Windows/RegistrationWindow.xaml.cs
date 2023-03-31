@@ -35,67 +35,66 @@ namespace KollegeKon.Windows
 
         private void btn_ItemSourceCick(object sender, RoutedEventArgs e)
         {
-            Button but = (Button)sender;
-            switch(but.Name)
+            MenuItem menu = (MenuItem)sender;
+            switch(menu.Header)
             {
                 
-                case  "StudBtn":
-                    Hide();
+                case  "Студенты":
+                    
                     StudentPage student = new StudentPage();
                     mainFrame.Navigate(student);
                     break;
-                case "TeachBtn":
-                    Hide();
+                case "Преподаватели":
+                    
                     TeacherPage teacher = new TeacherPage();
                     mainFrame.Navigate(teacher);
                     break;
-                case "Taskbtn":
-                    Hide();
+                case "Задания":
+                    
                     TaskPage task = new TaskPage();
                     mainFrame.Navigate(task);
                     break;
-                case "RoleBtn":
-                    Hide();
+                case "Роли":
+                    
                     RolePage role = new RolePage();
                     mainFrame.Navigate(role);
                     break;
-                case "GradeBtn":
-                    Hide();
+                case "Оценки":
+                    
                     GradePage grade = new GradePage();
                     mainFrame.Navigate(grade);
                     break;
-                case "BuildBtn":
-                    Hide();
+                case "Здания":
+                   
                     BuildingPage build = new BuildingPage();
                     mainFrame.Navigate(build);
                     break;
-                case "CabinetBtn":
-                    Hide();
+                case "Кабинеты":
+                    
                     CabinetPage cabinet = new CabinetPage();
                     mainFrame.Navigate(cabinet);
                     break;
-                case "AccountBtn":
-                    Hide();
-                    AccountPage account = new AccountPage();
+                case "Аккаунты":
+                    ;AccountPage account = new AccountPage();
                     mainFrame.Navigate(account);
                     break;
-                case "CoupleBtn":
-                    Hide();
+                case "Пары":
+                   
                     CouplePage couple = new CouplePage();
                     mainFrame.Navigate(couple);
                     break;
-                case "SheduleBtn":
-                    Hide();
+                case "Расписания":
+                   
                     ShedulePage shedule = new ShedulePage();
                     mainFrame.Navigate(shedule);
                     break;
-                case "JournalBtn":
-                    Hide();
+                case "Журнал":
+                    
                     JournalPage journal = new JournalPage();
                     mainFrame.Navigate(journal);
                     break;
-                case "GroupBtn":
-                    Hide();
+                case "Группы":
+                  
                     GroupPage group = new GroupPage();
                     mainFrame.Navigate(group);
                     break;
@@ -105,44 +104,14 @@ namespace KollegeKon.Windows
             SpDg.Visibility = Visibility.Visible;
             BackBtn.Visibility = Visibility.Visible;
         }
-        public void Hide()
-        {
-            RoleBtn.Visibility = Visibility.Hidden;
-            StudBtn.Visibility = Visibility.Hidden;
-            TeachBtn.Visibility = Visibility.Hidden;
-            GradeBtn.Visibility = Visibility.Hidden;
-            TaskBtn.Visibility = Visibility.Hidden;
-            BuildBtn.Visibility = Visibility.Hidden;
-            CabinetBtn.Visibility = Visibility.Hidden;
-            AccountBtn.Visibility = Visibility.Hidden;
-            CoupleBtn.Visibility = Visibility.Hidden;
-            SheduleBtn.Visibility = Visibility.Hidden;
-            JournalBtn.Visibility = Visibility.Hidden;
-            GroupBtn.Visibility = Visibility.Hidden;
-
-        }
-        public void ReHide()
-        {
-            RoleBtn.Visibility = Visibility.Visible;
-            StudBtn.Visibility = Visibility.Visible;
-            TeachBtn.Visibility = Visibility.Visible;
-            GradeBtn.Visibility = Visibility.Visible;
-            TaskBtn.Visibility = Visibility.Visible;
-            BuildBtn.Visibility = Visibility.Visible;
-            CabinetBtn.Visibility = Visibility.Visible;
-            AccountBtn.Visibility = Visibility.Visible;
-            CoupleBtn.Visibility = Visibility.Visible;
-            SheduleBtn.Visibility = Visibility.Visible;
-            JournalBtn.Visibility = Visibility.Visible;
-            GroupBtn.Visibility = Visibility.Visible;
-
-        }
+       
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            ReHide();
+           
             SpDg.Visibility = Visibility.Hidden;
-            BackBtn.Visibility = Visibility.Hidden;
+            
+            Change = false;
         }
     }
 }

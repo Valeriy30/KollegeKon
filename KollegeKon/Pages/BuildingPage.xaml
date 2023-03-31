@@ -16,13 +16,12 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedBuildng}" 
-            ItemsSource="{Binding View}"
+            ItemsSource="{Binding View}" SelectionChanged="dgBuilding_SelectionChanged"
          >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding City}" Header="Город" Width="130"/>
-                    <DataGridTextColumn Binding="{Binding Street}" Header="Улица" Width="60"/>
-                    <DataGridTextColumn Binding="{Binding House}" Header="Дом" Width="60"/>
+                    <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="250"/>
+                    
                     
 
                 </DataGrid.Columns>
@@ -34,15 +33,15 @@
                 Height="30"
                 Width="100"
                 Content="Добавить"
-                Margin="25 0 50 0">
+                Margin="25 0 50 0" Click="AddBtn_Click">
 
                 </Button>
                 <Button
                 x:Name="saveBtn"
                 Height="30"
                 Width="100"
-                Content="Сохранить"
-                    Margin="50 0 50 0">
+                Content="Изменить"
+                    Margin="50 0 50 0" Click="saveBtn_Click">
 
                 </Button>
                 <Button
@@ -50,7 +49,7 @@
                 Height="30"
                 Width="100"
                 Content="Удалить"
-                    Margin="50 0 25 0">
+                    Margin="50 0 25 0" Click="delBtn_Click">
 
                 </Button>
             </WrapPanel>

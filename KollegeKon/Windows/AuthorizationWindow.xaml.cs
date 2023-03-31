@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,8 +43,31 @@ namespace KollegeKon.Windows
             {
                 if (tBCapcha.Text == Capcha.Text)
                 {
-                    MainWindow main = new MainWindow();
-                    main.Show();
+                    if (authUser.IsActive != false)
+                    {
+                        string connectionString = @"Data Source=224-1\SQLEXPRESS; Initial Catalog=Kollege; Integrated Security=True";
+                        using(SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            string sqlExperssion = "SELECT Id FROM Student WHERE IdAccount = (SELECT Id FROM[Account] WHERE Login='" + tbLogin.Text + "' )";
+                            SqlCommand command = new SqlCommand(sqlExperssion, connection);
+                            if(command.ExecuteScalar()!=null)
+                            {
+                                MainWindow main = new MainWindow();
+                                main.Show();
+                                this.Close();
+                            }
+                            string sqlExperssion2 = "SELECT Id FROM Teacher WHERE IdAccount = (SELECT Id FROM[Account] WHERE Login='" + tbLogin.Text + "' )";
+                            SqlCommand command2 = new SqlCommand(sqlExperssion2, connection);
+                            if (command2.ExecuteScalar() != null)
+                            {
+                                RegistrationWindow reg = new RegistrationWindow();
+                                reg.Show();
+                                this.Close();
+                            }
+                        }
+                       
+                    }
                 }
                 else
                 {

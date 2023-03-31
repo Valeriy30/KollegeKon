@@ -31,8 +31,9 @@ namespace KollegeKon.Pages
             InitializeComponent();
             dgStudent.ItemsSource = context.Student.ToList();
             AddEditStudentPage edit = new AddEditStudentPage();
-           
-            
+            cmbGroup.DisplayMemberPath = "Name";
+            cmbGroup.ItemsSource = context.Group.ToList();
+
 
 
         }
@@ -82,6 +83,22 @@ namespace KollegeKon.Pages
             TextBlock tbCH = dgStudent.Columns[0].GetCellContent(dgStudent.Items[dgStudent.SelectedIndex]) as TextBlock;
             Idchange = Convert.ToInt32(tbCH.Text);
             
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            dgStudent.ItemsSource = context.Student.ToList().Where(i => i.Fname.Contains(Fname.Text));
+        }
+
+        private void Lname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            dgStudent.ItemsSource = context.Student.ToList().Where(i => i.Lname.Contains(Lname.Text));
+        }
+
+        private void cmbGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            dgStudent.ItemsSource = context.Student.ToList().Where(i => i.IdGroup== (cmbGroup.SelectedItem as Group).Id);
         }
     }
  }

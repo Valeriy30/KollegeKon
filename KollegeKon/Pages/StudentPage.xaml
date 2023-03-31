@@ -9,8 +9,48 @@
       Title="StudentPage">
 
     <Grid>
-        <StackPanel>
-        <DataGrid
+        <StackPanel
+            VerticalAlignment="Center"
+            >
+            <WrapPanel
+                Margin="20">
+                <TextBlock
+                    Height="25"
+                    Width="80"
+                    Text="Фамилия">
+                    
+                </TextBlock>
+                <TextBox
+                    x:Name="Fname"
+                     Height="25"
+                    Width="80" TextChanged="TextBox_TextChanged">
+                    
+                </TextBox>
+                <TextBlock
+                    Height="25"
+                    Width="80"
+                    Text="Имя">
+
+                </TextBlock>
+                <TextBox
+                    x:Name="Lname"
+                     Height="25"
+                    Width="80" TextChanged="Lname_TextChanged">
+
+                </TextBox>
+                <TextBlock
+                    Height="25"
+                    Width="80"
+                    Text="Группа">
+                </TextBlock>
+                <ComboBox
+                    x:Name="cmbGroup"
+                    Height="25"
+                    Width="80" SelectionChanged="cmbGroup_SelectionChanged">
+                    
+                </ComboBox>
+            </WrapPanel>
+            <DataGrid
         x:Name="dgStudent"    
         Height="350"
         Width="600"
@@ -20,8 +60,8 @@
          >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Fname}" Header="Имя" Width="50"/>
-                <DataGridTextColumn Binding="{Binding Lname}" Header="Фамилия" Width="90"/>
+                    <DataGridTextColumn Binding="{Binding Fname}" Header="Фамилия" Width="50"/>
+                    <DataGridTextColumn Binding="{Binding Lname}" Header="Имя" Width="90"/>
                 <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Birthday}" Header="Дата" Width="150"/>
                 <DataGridTextColumn Binding="{Binding IdGroup}" Header="Номер группы" Width="50"/>

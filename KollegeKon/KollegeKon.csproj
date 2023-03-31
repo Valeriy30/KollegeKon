@@ -67,11 +67,38 @@
     <Compile Include="Pages\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddEditAccountPage.xaml.cs">
+      <DependentUpon>AddEditAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditBuildingPage.xaml.cs">
+      <DependentUpon>AddEditBuildingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddEditCabinetPage.xaml.cs">
       <DependentUpon>AddEditCabinetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddEditCouplePage.xaml.cs">
+      <DependentUpon>AddEditCouplePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditGradePage.xaml.cs">
+      <DependentUpon>AddEditGradePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditGroupPage.xaml.cs">
+      <DependentUpon>AddEditGroupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditJournalPage.xaml.cs">
+      <DependentUpon>AddEditJournalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditRolePage.xaml.cs">
+      <DependentUpon>AddEditRolePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditShedulePage.xaml.cs">
+      <DependentUpon>AddEditShedulePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddEditStudentPage.xaml.cs">
       <DependentUpon>AddEditStudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditTaskPage.xaml.cs">
+      <DependentUpon>AddEditTaskPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddEditTeacherPage.xaml.cs">
       <DependentUpon>AddEditTeacherPage.xaml</DependentUpon>
@@ -119,11 +146,47 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddEditAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditBuildingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddEditCabinetPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddEditCouplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditGradePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditJournalPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditRolePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditShedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddEditStudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditTaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

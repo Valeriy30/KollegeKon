@@ -70,5 +70,10 @@ namespace KollegeKon.Pages
                 }
             }
         }
+
+        private void Fname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

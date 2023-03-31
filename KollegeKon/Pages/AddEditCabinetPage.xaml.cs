@@ -34,7 +34,7 @@ namespace KollegeKon.Pages
             {
 
 
-                cab.Id = context.Student.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Id;
+                cab.Id = context.Cabinet.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Id;
                 tbCabinet.Text = Convert.ToString( context.Cabinet.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Number);
                 tbfloor.Text = Convert.ToString(context.Cabinet.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Floor);
                 tbType.Text = context.Cabinet.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Type;
@@ -63,18 +63,21 @@ namespace KollegeKon.Pages
 
             if (Change == false)
             {
-               
 
-               
-               
+
+                cab.Number = Convert.ToInt32(tbCabinet.Text);
+               cab.Floor = Convert.ToInt32(tbfloor.Text);
+                cab.Type = tbType.Text;
                 context.Cabinet.Add(cab);
                 context.SaveChanges();
                 MessageBox.Show("O");
             }
             else
             {
-               
-               
+                cab.Number = Convert.ToInt32(tbCabinet.Text);
+                cab.Floor = Convert.ToInt32(tbfloor.Text);
+                cab.Type = tbType.Text;
+
                 context.Cabinet.AddOrUpdate(cab);
                 context.SaveChanges();
                 MessageBox.Show("Ok");

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KollegeKon.ClassHelper;
+using KollegeKon.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +31,44 @@ namespace KollegeKon.Pages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            Idchange = 0;
 
+            EFClass.mainFrame.Navigate(new AddEditGroupPage());
+        }
+
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Change = true;
+            AddEditGroupPage edit = new AddEditGroupPage();
+
+            EFClass.mainFrame.Navigate(edit);
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Idchange = 0;
+            var deleteGroup = dgGroup.SelectedItems.Cast<Group>().ToList();
+            if (MessageBox.Show($"Вы точно хотите удалить ", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    context.Group.RemoveRange(deleteGroup);
+                    context.SaveChanges();
+                    MessageBox.Show("Удаленно");
+                    dgGroup.ItemsSource = context.Group.ToList();
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+        }
+
+        private void dgGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBlock tbCH = dgGroup.Columns[0].GetCellContent(dgGroup.Items[dgGroup.SelectedIndex]) as TextBlock;
+            Idchange = Convert.ToInt32(tbCH.Text);
         }
     }
 }

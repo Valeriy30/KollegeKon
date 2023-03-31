@@ -128,9 +128,10 @@ namespace KollegeKon.Pages
                 account.Password = tbPass.Text;
                 account.IdRole = 3;
 
-               stud.Lname = tbFname.Text;
-               stud.Fname = tbLname.Text;
-               stud.Patronymic = tbPatronymic.Text;
+               
+               stud.Fname = tbFname.Text;
+                stud.Lname = tbLname.Text;
+                stud.Patronymic = tbPatronymic.Text;
                stud.Number = tbPatronymic.Text;
                stud.Birthday = dpBirthDay.SelectedDate.Value;
                stud.IdGroup = (cmbGroup.SelectedItem as Group).Id;
@@ -150,9 +151,10 @@ namespace KollegeKon.Pages
                 account.Password = tbPass.Text;
                 account.IdRole = 3;
                    
-               stud.Lname = tbFname.Text;
-               stud.Fname = tbLname.Text;
-               stud.Patronymic = tbPatronymic.Text;
+              
+               stud.Fname = tbFname.Text;
+                stud.Lname = tbLname.Text;
+                stud.Patronymic = tbPatronymic.Text;
                stud.Number = tbPatronymic.Text;
                stud.Birthday = dpBirthDay.SelectedDate.Value;
                stud.IdGroup = (cmbGroup.SelectedItem as Group).Id;

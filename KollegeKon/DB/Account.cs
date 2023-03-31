@@ -27,6 +27,7 @@ namespace KollegeKon.DB
         public int IdRole { get; set; }
         public Nullable<System.DateTime> LastEntrance { get; set; }
         public Nullable<int> TimeOnsystem { get; set; }
+        public bool IsActive { get; set; }
     
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

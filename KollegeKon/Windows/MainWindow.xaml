@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Grid>
-        
+        <Menu
+            Height="40"
+            Width="800"
+            VerticalAlignment="Top">
+            <MenuItem Header="Таблицы" Height="40">
+                <MenuItem Height="40"  Header="Оценки" Click="btn_ItemSourceCick"></MenuItem>
+                <MenuItem Height="40"  Header="Расписание" Click="btn_ItemSourceCick"></MenuItem>
+                
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

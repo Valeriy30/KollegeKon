@@ -9,6 +9,112 @@
       Title="AddEditCouplePage">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите номер пары"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+            <TextBox
+                x:Name="tbCouple"
+                Height="40"
+                Width="200"
+                Text="{Binding Number,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите название"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+            <TextBox
+                x:Name="tbName"
+                Height="40"
+                Width="200"
+                Text="{Binding Name,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Выберете дату"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+
+          
+            <DatePicker x:Name="dpDate"
+                FontSize="20"
+                Height="40"
+                Width="200"
+                Text="{Binding Date,Mode=OneWayToSource}"
+                >
+            </DatePicker>
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите номер учителя"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+            <TextBox
+                x:Name="tbTeacher"
+                Height="40"
+                Width="200"
+                Text="{Binding IdTeacher,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+
+            <TextBlock
+                Height="20"
+                Width="200"
+                Text="Введите номер кабинета"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                ></TextBlock>
+
+            <TextBox
+                x:Name="tbCabinet"
+                Height="40"
+                Width="200"
+                Text="{Binding IdCabinet,Mode=OneWayToSource}"
+                TextAlignment="Center"
+                FontSize="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBox>
+            <Button
+                x:Name="btnAuth"
+                Content="Сохранить"
+                Height="40"
+                Width="200"
+                Margin="20" Click="btnAuth_Click" 
+                >
+            </Button>
+
+
+        </StackPanel>
     </Grid>
 </Page>

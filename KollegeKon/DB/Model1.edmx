@@ -15,15 +15,14 @@
           <Property Name="IdRole" Type="int" Nullable="false" />
           <Property Name="LastEntrance" Type="date" />
           <Property Name="TimeOnsystem" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="House" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Cabinet">
           <Key>
@@ -873,6 +872,7 @@
           <Property Name="IdRole" Type="Int32" Nullable="false" />
           <Property Name="LastEntrance" Type="DateTime" Precision="0" />
           <Property Name="TimeOnsystem" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="KollegeModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK_Student_Account" FromRole="Account" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Account" ToRole="Teacher" />
@@ -882,9 +882,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="House" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cabinet" Relationship="KollegeModel.FK__Cabinet__IdBuild__440B1D61" FromRole="Building" ToRole="Cabinet" />
         </EntityType>
         <EntityType Name="Cabinet">
@@ -1409,6 +1407,7 @@
           <EntitySetMapping Name="Account">
             <EntityTypeMapping TypeName="KollegeModel.Account">
               <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="TimeOnsystem" ColumnName="TimeOnsystem" />
                 <ScalarProperty Name="LastEntrance" ColumnName="LastEntrance" />
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
@@ -1421,9 +1420,7 @@
           <EntitySetMapping Name="Building">
             <EntityTypeMapping TypeName="KollegeModel.Building">
               <MappingFragment StoreEntitySet="Building">
-                <ScalarProperty Name="House" ColumnName="House" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

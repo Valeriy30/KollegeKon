@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,22 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KollegeKon.ClassHelper;
-using static System.Net.Mime.MediaTypeNames;
-using static KollegeKon.ClassHelper.EFClass;
 
-namespace KollegeKon
+namespace KollegeKon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AddEditJournalPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddEditJournalPage : Page
     {
-        public MainWindow()
+        public AddEditJournalPage()
         {
             InitializeComponent();
-            
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
-    
 }
