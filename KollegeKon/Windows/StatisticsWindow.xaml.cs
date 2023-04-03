@@ -23,7 +23,7 @@ namespace KollegeKon.Windows
         public StatisticsWindow()
         {
             InitializeComponent();
-            dgStatka.ItemsSource = context.Log.ToList();
+           // dgStatka.ItemsSource = context.Log.Where(i => ).ToList();
         }
         private void Back_Click(object sender , RoutedEventArgs e)
         {
