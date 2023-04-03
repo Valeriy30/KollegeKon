@@ -88,6 +88,18 @@
           <Property Name="IdStudent" Type="int" Nullable="false" />
           <Property Name="IdGrade" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="LogInTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LogOutTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TimeSpent" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnsuccesfulLogOut" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdAccount" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -109,8 +121,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="IdGroup" Type="int" Nullable="false" />
@@ -143,8 +155,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="Speciality" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -193,11 +205,6 @@
           <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
           <Property Name="Группа" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6013: Первичный ключ в таблице или представлении "Kollege.dbo.TaskGroup" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
-        <EntityType Name="TaskGroup">
-          <Property Name="Домашнее задание" Type="nvarchar" MaxLength="500" />
-        </EntityType>-->
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "Kollege.dbo.TeacherCouples" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="TeacherCouples">
@@ -455,6 +462,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Log_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Log" Type="Self.Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Account">
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
@@ -541,6 +560,7 @@
           <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Journal" EntityType="Self.Journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shedule" EntityType="Self.Shedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -663,6 +683,10 @@
           <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Account" Association="Self.FK_Log_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Log" EntitySet="Log" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Account" Association="Self.FK_Student_Account">
             <End Role="Account" EntitySet="Account" />
@@ -823,6 +847,11 @@
             <End Role="Couple" EntitySet="Couple" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
+          <EntitySet Name="Log" EntityType="KollegeModel.Log" />
+          <AssociationSet Name="FK_Log_Account" Association="KollegeModel.FK_Log_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Log" EntitySet="Log" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="InfAboutCouples_Result">
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
@@ -876,6 +905,7 @@
           <NavigationProperty Name="Role" Relationship="KollegeModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK_Student_Account" FromRole="Account" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Account" ToRole="Teacher" />
+          <NavigationProperty Name="Log" Relationship="KollegeModel.FK_Log_Account" FromRole="Account" ToRole="Log" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -1333,6 +1363,31 @@
           <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
           <End Type="KollegeModel.Task" Role="Task" Multiplicity="*" />
         </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LogInTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogOutTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSpent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnsuccesfulLogOut" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAccount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Log_Account" FromRole="Log" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK_Log_Account">
+          <End Type="KollegeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="KollegeModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1617,6 +1672,19 @@
               <ScalarProperty Name="Id" ColumnName="IdCouple" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="KollegeModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="UnsuccesfulLogOut" ColumnName="UnsuccesfulLogOut" />
+                <ScalarProperty Name="TimeSpent" ColumnName="TimeSpent" />
+                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

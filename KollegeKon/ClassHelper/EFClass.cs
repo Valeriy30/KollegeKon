@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -14,6 +15,9 @@ namespace KollegeKon.ClassHelper
         public static Frame mainFrame { get; set; }
         public static int Idchange = 0;
         public static bool Change = false ;
-    
+        public static DateTime Date;
+        public static TimeSpan Login ;
+       
+        public static int IdAuthorization;
     }
 }

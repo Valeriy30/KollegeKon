@@ -19,6 +19,7 @@ namespace KollegeKon.DB
         {
             this.Student = new HashSet<Student>();
             this.Teacher = new HashSet<Teacher>();
+            this.Log = new HashSet<Log>();
         }
     
         public int Id { get; set; }
@@ -34,5 +35,7 @@ namespace KollegeKon.DB
         public virtual ICollection<Student> Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teacher> Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Log> Log { get; set; }
     }
 }

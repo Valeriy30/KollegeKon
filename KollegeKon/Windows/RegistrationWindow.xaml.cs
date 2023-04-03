@@ -27,6 +27,7 @@ namespace KollegeKon.Windows
         public RegistrationWindow()
         {
             InitializeComponent();
+            Date = DateTime.Now;
 
             EFClass.mainFrame = mainFrame;
             
@@ -43,66 +44,78 @@ namespace KollegeKon.Windows
                     
                     StudentPage student = new StudentPage();
                     mainFrame.Navigate(student);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Преподаватели":
                     
                     TeacherPage teacher = new TeacherPage();
                     mainFrame.Navigate(teacher);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Задания":
                     
                     TaskPage task = new TaskPage();
                     mainFrame.Navigate(task);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Роли":
                     
                     RolePage role = new RolePage();
                     mainFrame.Navigate(role);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Оценки":
                     
                     GradePage grade = new GradePage();
                     mainFrame.Navigate(grade);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Здания":
                    
                     BuildingPage build = new BuildingPage();
                     mainFrame.Navigate(build);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Кабинеты":
                     
                     CabinetPage cabinet = new CabinetPage();
+                    TbTitle.Text = "Регистрация нового студента";
                     mainFrame.Navigate(cabinet);
                     break;
                 case "Аккаунты":
                     ;AccountPage account = new AccountPage();
+                    TbTitle.Text = "Регистрация нового студента";
                     mainFrame.Navigate(account);
                     break;
                 case "Пары":
                    
                     CouplePage couple = new CouplePage();
+                    TbTitle.Text = "Регистрация нового студента";
                     mainFrame.Navigate(couple);
                     break;
                 case "Расписания":
                    
                     ShedulePage shedule = new ShedulePage();
+                    TbTitle.Text = "Регистрация нового студента";
                     mainFrame.Navigate(shedule);
                     break;
                 case "Журнал":
                     
                     JournalPage journal = new JournalPage();
                     mainFrame.Navigate(journal);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
                 case "Группы":
                   
                     GroupPage group = new GroupPage();
                     mainFrame.Navigate(group);
+                    TbTitle.Text = "Регистрация нового студента";
                     break;
 
 
             }
             SpDg.Visibility = Visibility.Visible;
-            BackBtn.Visibility = Visibility.Visible;
+            
         }
        
 
@@ -112,6 +125,24 @@ namespace KollegeKon.Windows
             SpDg.Visibility = Visibility.Hidden;
             
             Change = false;
+        }
+        private void statisctics_Click (object sender, RoutedEventArgs e)
+        {
+            StatisticsWindow statka = new StatisticsWindow();
+            statka.Show();
+            this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Log log = new Log();
+            log.Date = Date;
+            log.LogInTime = Login.ToString().Substring(0, 8);
+            log.LogOutTime = DateTime.Now.TimeOfDay.ToString().Substring(0, 8);
+            log.TimeSpent = (DateTime.Now.TimeOfDay - Login).ToString().Substring(1, 7);
+            log.IdAccount = IdAuthorization;
+            context.Log.Add(log);
+            context.SaveChanges();
         }
     }
 }

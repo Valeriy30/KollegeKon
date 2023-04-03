@@ -4,6 +4,7 @@ using KollegeKon.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,10 +61,10 @@ namespace KollegeKon.Pages
                     MessageBox.Show("Удаленно");
                     dgStudent.ItemsSource = context.Student.ToList();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    
-                    
+
+
                 }
             }
         }
@@ -72,9 +73,9 @@ namespace KollegeKon.Pages
         {
             Change = true;
             AddEditStudentPage edit = new AddEditStudentPage();
-           
+
             EFClass.mainFrame.Navigate(edit);
-           
+
 
         }
 
@@ -82,7 +83,7 @@ namespace KollegeKon.Pages
         {
             TextBlock tbCH = dgStudent.Columns[0].GetCellContent(dgStudent.Items[dgStudent.SelectedIndex]) as TextBlock;
             Idchange = Convert.ToInt32(tbCH.Text);
-            
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -97,8 +98,58 @@ namespace KollegeKon.Pages
 
         private void cmbGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-            dgStudent.ItemsSource = context.Student.ToList().Where(i => i.IdGroup== (cmbGroup.SelectedItem as Group).Id);
+
+            dgStudent.ItemsSource = context.Student.ToList().Where(i => i.IdGroup == (cmbGroup.SelectedItem as Group).Id);
         }
+
+        private void chb_Click(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            switch (cb.Name)
+            {
+                case "chbGen":
+                    if (chbGen.IsChecked == false) colIdGender.Visibility = Visibility.Hidden;
+                    else colIdGender.Visibility = Visibility.Visible;
+                    break;
+
+                case "chbFst":
+                    if (chbFst.IsChecked == false) colFname.Visibility = Visibility.Hidden;
+                    else colFname.Visibility = Visibility.Visible; break;
+
+                case "chbLst":
+                    if (chbLst.IsChecked == false) colLname.Visibility = Visibility.Hidden;
+                    else colLname.Visibility = Visibility.Visible; break;
+
+                case "chbPtr":
+                    if (chbPtr.IsChecked == false) colPatronymic.Visibility = Visibility.Hidden;
+                    else colPatronymic.Visibility = Visibility.Visible; break;
+
+                case "chbBrt":
+                    if (chbBrt.IsChecked == false) colBirthday.Visibility = Visibility.Hidden;
+                    else colBirthday.Visibility = Visibility.Visible; break;
+
+                case "chbPhn":
+                    if (chbPhn.IsChecked == false) colNumber.Visibility = Visibility.Hidden;
+                    else colNumber.Visibility = Visibility.Visible; break;
+
+                case "chbEml":
+                    if (chbEml.IsChecked == false) colEmail.Visibility = Visibility.Hidden;
+                    else colEmail.Visibility = Visibility.Visible; break;
+                case "chbSpec":
+                    if (chbGroup.IsChecked == false) colIdGroup.Visibility = Visibility.Hidden;
+                    else colIdGroup.Visibility = Visibility.Visible; break;
+                case "chbAdres":
+                    if (chbAdres.IsChecked == false) colAddress.Visibility = Visibility.Hidden;
+                    else colAddress.Visibility = Visibility.Visible; break;
+                case "chbAcc":
+                    if (chbAcc.IsChecked == false) colAcc.Visibility = Visibility.Hidden;
+                    else colAcc.Visibility = Visibility.Visible; break;
+                case "chbId":
+                    if (chbId.IsChecked == false) colId.Visibility = Visibility.Hidden;
+                    else colId.Visibility = Visibility.Visible; break;
+            }
+        }
+        
     }
- }
+    
+}

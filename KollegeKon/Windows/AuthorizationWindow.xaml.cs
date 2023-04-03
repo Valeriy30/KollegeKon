@@ -54,6 +54,8 @@ namespace KollegeKon.Windows
                             if(command.ExecuteScalar()!=null)
                             {
                                 MainWindow main = new MainWindow();
+                                IdAuthorization = authUser.Id;
+                                Login = DateTime.Now.TimeOfDay;
                                 main.Show();
                                 this.Close();
                             }
@@ -62,6 +64,8 @@ namespace KollegeKon.Windows
                             if (command2.ExecuteScalar() != null)
                             {
                                 RegistrationWindow reg = new RegistrationWindow();
+                                Login = DateTime.Now.TimeOfDay;
+                                IdAuthorization = authUser.Id;
                                 reg.Show();
                                 this.Close();
                             }

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KollegeKon.Windows"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="1000" Width="800">
+        Title="RegistrationWindow" Height="1000" Width="800" Closed="Window_Closed"
+        >
     <Grid>
         <StackPanel>
             <Menu
@@ -25,25 +26,18 @@
                     <MenuItem Height="40"  Header="Расписание" Click="btn_ItemSourceCick"></MenuItem>
                     <MenuItem Height="40"  Header="Группы" Click="btn_ItemSourceCick"></MenuItem>
                 </MenuItem>
+                <MenuItem Height="40"  Header="Статистика" Click="statisctics_Click" ></MenuItem>
+                <MenuItem Height="40"  Header="Выход" Click="BackBtn_Click" ></MenuItem>
             </Menu>
-            <Button
-            x:Name="BackBtn"
-            Height="40"
-            Width="80"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"
-            Margin="0 20 0 0"
-            Content="Назад"
-            Visibility="Visible" Click="BackBtn_Click"
-            >
-            </Button>
+            
+          
         </StackPanel>
         <StackPanel
             x:Name="SpDg"
             Visibility="Hidden"
         >
         <TextBlock
-                
+                x:Name="TbTitle"
                 Height="50"
                 Width="400"
                 Text="Регистрация нового пользователя"
@@ -64,10 +58,7 @@
                 >
                 
             </Frame>
-            <WrapPanel
-                HorizontalAlignment="Center">
            
-            </WrapPanel>
         </StackPanel>
     </Grid>
 </Window>

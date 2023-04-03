@@ -45,6 +45,7 @@ namespace KollegeKon.DB
         public virtual DbSet<StudentsInGroup> StudentsInGroup { get; set; }
         public virtual DbSet<TeacherCouples> TeacherCouples { get; set; }
         public virtual DbSet<TeachersSpec> TeachersSpec { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
     
         public virtual int CountStudentInGroup(Nullable<int> group)
         {

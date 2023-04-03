@@ -5,17 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KollegeKon"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="800" Width="1000" Closed="Window_Closed">
     <Grid>
+        <StackPanel>
         <Menu
-            Height="40"
-            Width="800"
+            Height="40" 
             VerticalAlignment="Top">
-            <MenuItem Header="Таблицы" Height="40">
-                <MenuItem Height="40"  Header="Оценки" Click="btn_ItemSourceCick"></MenuItem>
-                <MenuItem Height="40"  Header="Расписание" Click="btn_ItemSourceCick"></MenuItem>
-                
+            <MenuItem Header="Главная" Height="40">
+                <MenuItem Height="40"  Header="Оценки" ></MenuItem>
+                <MenuItem Height="40"  Header="Расписание" ></MenuItem>
             </MenuItem>
+            <MenuItem Height="40"  Header="Выход" ></MenuItem>
+            
         </Menu>
+            <Label 
+               x:Name="lbDate"
+               Height="40"
+               Width="150"  
+               FontSize="20"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top">
+
+            </Label>
+            <Label 
+               x:Name="lbTime"
+               Height="30"
+               Width="150"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top">
+            
+        </Label>
+            <Frame
+                x:Name="mainFrame"
+                Height="850"
+                Width="800"
+                NavigationUIVisibility="Hidden"
+                >
+
+            </Frame>
+        </StackPanel>
     </Grid>
 </Window>

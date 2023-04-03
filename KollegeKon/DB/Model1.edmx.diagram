@@ -42,6 +42,8 @@
         <AssociationConnector Association="KollegeModel.FK__Journal__IdStude__5AEE82B9" />
         <AssociationConnector Association="KollegeModel.FK__Task__IdTeacher__46E78A0C" />
         <AssociationConnector Association="KollegeModel.CoupleTask" />
+        <EntityTypeShape EntityType="KollegeModel.Log" Width="1.5" PointX="3" PointY="15.25" />
+        <AssociationConnector Association="KollegeModel.FK_Log_Account" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

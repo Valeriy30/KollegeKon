@@ -5,35 +5,89 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:KollegeKon.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="TeacherPage">
 
     <Grid>
         <StackPanel>
-            <DataGrid
+            <WrapPanel
+                Margin="20">
+                <TextBlock
+                    Height="25"
+                    Width="80"
+                    Text="Фамилия">
+
+                </TextBlock>
+                <TextBox
+                    x:Name="Fname"
+                     Height="25"
+                    Width="80" TextChanged="Fname_TextChanged" >
+
+                </TextBox>
+                <TextBlock
+                    Height="25"
+                    Width="80"
+                    Text="Имя">
+
+                </TextBlock>
+                <TextBox
+                    x:Name="Lname"
+                     Height="25"
+                    Width="80" TextChanged="Lname_TextChanged" >
+
+                </TextBox>
+                <TextBlock
+                    Height="25"
+                    Width="100"
+                    Text="Специальноть">
+                </TextBlock>
+                <TextBox
+                    x:Name="Speciality"
+                     Height="25"
+                    Width="80" TextChanged="Speciality_TextChanged" >
+
+                </TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <StackPanel
+            >
+                    <CheckBox x:Name="chbId" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Id" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbGen" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Gender" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbFst" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="FirstName" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbLst" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="LastName" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbPtr" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Patronymic" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbBrt" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Birthday" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbSpec" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Speciality" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbPhn" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Number" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbEml" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Email" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbAdres" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="Address" Click="chb_Click"></CheckBox>
+                    <CheckBox x:Name="chbAcc" IsChecked="True" VerticalAlignment="Center" Margin="10" Content="IdAccount" Click="chb_Click"></CheckBox>
+                </StackPanel>
+
+                <DataGrid
         x:Name="dgTeacher"    
-        Height="350"
+        Height="400"
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedTeacher}" 
             ItemsSource="{Binding View}" SelectionChanged="dgTeacher_SelectionChanged"
          >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Fname}" Header="Имя" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Lname}" Header="Фамилия" Width="90"/>
-                    <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Birthday}" Header="Дата" Width="150"/>
-                    <DataGridTextColumn Binding="{Binding Speciality}" Header="Специальность" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Email}" Header="Почта" Width="130"/>
-                    <DataGridTextColumn Binding="{Binding Number}" Header="Номер телефона" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding IdGender}" Header="Номер гендера" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Address}" Header="Адрес" Width="90"/>
-                    
-                    <DataGridTextColumn Binding="{Binding IdAccount}" Header="Номер акканута" Width="50"/>
+                    <DataGridTextColumn x:Name="colId" Binding="{Binding Id}" Header="Номер" Width="50"/>
+                    <DataGridTextColumn x:Name="colFname" Binding="{Binding Fname}" Header="Имя" Width="50"/>
+                    <DataGridTextColumn x:Name="colLname" Binding="{Binding Lname}" Header="Фамилия" Width="90"/>
+                    <DataGridTextColumn x:Name="colPatronymic" Binding="{Binding Patronymic}" Header="Отчество" Width="100"/>
+                    <DataGridTextColumn x:Name="colBirthday" Binding="{Binding Birthday}" Header="Дата" Width="150"/>
+                    <DataGridTextColumn x:Name="colSpec" Binding="{Binding Speciality}" Header="Специальность" Width="100"/>
+                    <DataGridTextColumn x:Name="colEmail" Binding="{Binding Email}" Header="Почта" Width="130"/>
+                    <DataGridTextColumn x:Name="colNumber" Binding="{Binding Number}" Header="Номер телефона" Width="100"/>
+                    <DataGridTextColumn x:Name="colIdGender" Binding="{Binding IdGender}" Header="Номер гендера" Width="50"/>
+                    <DataGridTextColumn x:Name="colAddress" Binding="{Binding Address}" Header="Адрес" Width="90"/>
+                    <DataGridTextColumn x:Name="colAcc" Binding="{Binding IdAccount}" Header="Номер акканута" Width="50"/>
 
                 </DataGrid.Columns>
             </DataGrid>
+            </WrapPanel>
             <WrapPanel
                 Width="600">
                 <Button
@@ -62,5 +116,6 @@
                 </Button>
             </WrapPanel>
         </StackPanel>
+        
     </Grid>
 </Page>

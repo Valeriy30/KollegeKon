@@ -1,0 +1,38 @@
+﻿<Window x:Class="KollegeKon.Windows.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KollegeKon.Windows"
+        mc:Ignorable="d"
+        Title="StatisticsWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <Button
+             x:Name="btnBack" 
+                Height="30"
+                Width="100"
+                Content="Назад"
+                HorizontalAlignment="Left"
+                Margin="25 0 50 0" Click="Back_Click"
+                >
+            </Button>
+            <DataGrid
+        x:Name="dgStatka"    
+        Height="350"
+        Width="700"
+        Margin="0 0 0 10"  
+         AutoGenerateColumns="False" SelectedItem="{Binding SelectedCouple}" 
+            ItemsSource="{Binding View}" 
+         >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Data}" Header="Дата" Width="50"/>
+                <DataGridTextColumn Binding="{Binding LogInTime}" Header="Время входа" Width="100"/>
+                <DataGridTextColumn Binding="{Binding LogOutTime}" Header="Время выхода" Width="100"/>
+                <DataGridTextColumn Binding="{Binding TimeSpent}" Header="Время в системе" Width="110"/>
+                <DataGridTextColumn Binding="{Binding UnsuccesfullLogOut}" Header="Несанкционированный выход из системы" Width="250"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>
