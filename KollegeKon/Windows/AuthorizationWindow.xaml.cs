@@ -55,6 +55,7 @@ namespace KollegeKon.Windows
                             {
                                 MainWindow main = new MainWindow();
                                 IdAuthorization = authUser.Id;
+                                RoleAdmin = false;
                                 Login = DateTime.Now.TimeOfDay;
                                 main.Show();
                                 this.Close();
@@ -65,6 +66,7 @@ namespace KollegeKon.Windows
                             {
                                 RegistrationWindow reg = new RegistrationWindow();
                                 Login = DateTime.Now.TimeOfDay;
+                                RoleAdmin = true;
                                 IdAuthorization = authUser.Id;
                                 reg.Show();
                                 this.Close();
@@ -98,11 +100,6 @@ namespace KollegeKon.Windows
 
         }
 
-        private void tblReg_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            RegistrationWindow reg = new RegistrationWindow();
-            this.Close();
-            reg.Show();
-        }
+       
     }
 }

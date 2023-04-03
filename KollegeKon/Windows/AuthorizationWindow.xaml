@@ -109,14 +109,15 @@
             </Button>
             <TextBlock
                 x:Name="tblReg"
-                 Height="20"
+                 Height="50"
                 Width="200"
-                Text="Нет аккаунта? Зарегистрироваться"
+                Text="Для получения доступа свяжитесь с куратором группы"
                 FontSize="10"
+                TextWrapping="Wrap"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 TextAlignment="Center"
-                Margin="10 50 10 0" MouseLeftButtonUp="tblReg_MouseLeftButtonUp"
+                Margin="10 50 10 0"
                 
                 ></TextBlock>
         </StackPanel>

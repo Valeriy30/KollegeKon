@@ -28,6 +28,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel
+                x:Name="wpAdmin"
                 Width="600">
                 <Button
                 x:Name="AddBtn"

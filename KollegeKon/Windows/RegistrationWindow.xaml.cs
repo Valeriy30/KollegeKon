@@ -28,7 +28,14 @@ namespace KollegeKon.Windows
         {
             InitializeComponent();
             Date = DateTime.Now;
-
+            lbDate.Content = DateTime.Now.ToString().Substring(0, 10);
+            lbTime.Content = DateTime.Now.ToShortTimeString();
+            var timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.IsEnabled = true;
+            timer.Tick += (o, t) => { lbDate.Content = DateTime.Now.ToString().Substring(0, 10); };
+            timer.Tick += (o, t) => { lbTime.Content = DateTime.Now.ToShortTimeString(); };
+            timer.Start();
             EFClass.mainFrame = mainFrame;
             
            
@@ -44,72 +51,72 @@ namespace KollegeKon.Windows
                     
                     StudentPage student = new StudentPage();
                     mainFrame.Navigate(student);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Студенты";
                     break;
                 case "Преподаватели":
                     
                     TeacherPage teacher = new TeacherPage();
                     mainFrame.Navigate(teacher);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Преподаватели";
                     break;
                 case "Задания":
                     
                     TaskPage task = new TaskPage();
                     mainFrame.Navigate(task);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Задания";
                     break;
                 case "Роли":
                     
                     RolePage role = new RolePage();
                     mainFrame.Navigate(role);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Роли";
                     break;
                 case "Оценки":
                     
                     GradePage grade = new GradePage();
                     mainFrame.Navigate(grade);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Оценки";
                     break;
                 case "Здания":
                    
                     BuildingPage build = new BuildingPage();
                     mainFrame.Navigate(build);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Здания";
                     break;
                 case "Кабинеты":
                     
                     CabinetPage cabinet = new CabinetPage();
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Кабинеты";
                     mainFrame.Navigate(cabinet);
                     break;
                 case "Аккаунты":
                     ;AccountPage account = new AccountPage();
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Аккаунты";
                     mainFrame.Navigate(account);
                     break;
                 case "Пары":
                    
                     CouplePage couple = new CouplePage();
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Пары";
                     mainFrame.Navigate(couple);
                     break;
                 case "Расписания":
                    
                     ShedulePage shedule = new ShedulePage();
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Расписания";
                     mainFrame.Navigate(shedule);
                     break;
                 case "Журнал":
                     
                     JournalPage journal = new JournalPage();
                     mainFrame.Navigate(journal);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Журнал";
                     break;
                 case "Группы":
                   
                     GroupPage group = new GroupPage();
                     mainFrame.Navigate(group);
-                    TbTitle.Text = "Регистрация нового студента";
+                    TbTitle.Text = "Группы";
                     break;
 
 

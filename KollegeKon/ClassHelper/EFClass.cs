@@ -17,7 +17,7 @@ namespace KollegeKon.ClassHelper
         public static bool Change = false ;
         public static DateTime Date;
         public static TimeSpan Login ;
-       
+        public static bool RoleAdmin;
         public static int IdAuthorization;
     }
 }

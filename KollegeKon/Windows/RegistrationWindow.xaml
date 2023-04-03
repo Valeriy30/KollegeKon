@@ -29,8 +29,25 @@
                 <MenuItem Height="40"  Header="Статистика" Click="statisctics_Click" ></MenuItem>
                 <MenuItem Height="40"  Header="Выход" Click="BackBtn_Click" ></MenuItem>
             </Menu>
-            
-          
+            <Label 
+               x:Name="lbDate"
+               Height="40"
+               Width="150"  
+               FontSize="20"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top">
+
+            </Label>
+            <Label 
+               x:Name="lbTime"
+               Height="30"
+               Width="150"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top">
+
+            </Label>
+
+
         </StackPanel>
         <StackPanel
             x:Name="SpDg"
@@ -40,7 +57,7 @@
                 x:Name="TbTitle"
                 Height="50"
                 Width="400"
-                Text="Регистрация нового пользователя"
+                Text=""
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 FontSize="20"

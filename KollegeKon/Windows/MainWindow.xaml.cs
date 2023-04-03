@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KollegeKon.ClassHelper;
 using KollegeKon.DB;
+using KollegeKon.Pages;
 using static System.Net.Mime.MediaTypeNames;
 using static KollegeKon.ClassHelper.EFClass;
 
@@ -55,6 +56,26 @@ namespace KollegeKon
             
 
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem menu = (MenuItem)sender;
+            switch (menu.Header)
+            {
+                case "Расписание":
+
+                    ShedulePage shedule = new ShedulePage();
+                    mainFrame.Navigate(shedule);
+                    break;
+                case "Оценки":
+
+                    GradePage Grade = new GradePage();
+                    mainFrame.Navigate(Grade);
+                    break;
+            }
+        }
+
+       
     }
     
 }

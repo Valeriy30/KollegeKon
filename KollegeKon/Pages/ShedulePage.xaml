@@ -16,7 +16,7 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedShedule}" 
-            ItemsSource="{Binding View}" SelectionChanged="dgShedule_SelectionChanged"
+            ItemsSource="{Binding View}" 
          >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding IdCouple}" Header="Номер пары" Width="50"/>
@@ -27,7 +27,9 @@
                 </DataGrid.Columns>
             </DataGrid>
             <WrapPanel
-                Width="600">
+                x:Name="wpAdmin"
+                Width="600"
+                Visibility="Hidden">
                 <Button
                 x:Name="AddBtn"
                 Height="30"

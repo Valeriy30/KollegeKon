@@ -24,7 +24,7 @@ namespace KollegeKon.Pages
         public JournalPage()
         {
             InitializeComponent();
-            dgJournal.ItemsSource = context.Journal.ToList();
+            dgJournal.ItemsSource = context.Journal.Where(i => i.IdStudent==IdAuthorization).ToList();
 
         }
     }

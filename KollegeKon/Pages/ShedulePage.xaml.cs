@@ -26,7 +26,11 @@ namespace KollegeKon.Pages
         public ShedulePage()
         {
             InitializeComponent();
-            dgShedule.ItemsSource = context.Shedule.ToList();
+            if (RoleAdmin == false)
+            {
+                dgShedule.ItemsSource = context.Shedule.Where(i => i.IdGroup == context.Group.Where(o => o.Id == context.Student.Where(p => p.Id == IdAuthorization).FirstOrDefault().IdGroup).FirstOrDefault().Id).ToList() ;
+                wpAdmin.Visibility = Visibility.Hidden;
+            }
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -65,10 +69,6 @@ namespace KollegeKon.Pages
             }
         }
 
-        private void dgShedule_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            TextBlock tbCH = dgShedule.Columns[0].GetCellContent(dgShedule.Items[dgShedule.SelectedIndex]) as TextBlock;
-            Idchange = Convert.ToInt32(tbCH.Text);
-        }
+        
     }
 }

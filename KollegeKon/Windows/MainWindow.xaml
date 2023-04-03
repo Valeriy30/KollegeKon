@@ -12,8 +12,8 @@
             Height="40" 
             VerticalAlignment="Top">
             <MenuItem Header="Главная" Height="40">
-                <MenuItem Height="40"  Header="Оценки" ></MenuItem>
-                <MenuItem Height="40"  Header="Расписание" ></MenuItem>
+                <MenuItem Height="40"  Header="Оценки" Click="MenuItem_Click" ></MenuItem>
+                <MenuItem Height="40"  Header="Расписание" Click="MenuItem_Click" ></MenuItem>
             </MenuItem>
             <MenuItem Height="40"  Header="Выход" ></MenuItem>
             

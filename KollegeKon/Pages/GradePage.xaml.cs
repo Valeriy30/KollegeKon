@@ -26,7 +26,7 @@ namespace KollegeKon.Pages
         public GradePage()
         {
             InitializeComponent();
-            dgGrade.ItemsSource = context.Grade.ToList();
+            dgGrade.ItemsSource = context.Grade.Where(i => i.IdStudent==IdAuthorization).ToList();
 
         }
 
