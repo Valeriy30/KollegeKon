@@ -17,13 +17,13 @@ namespace KollegeKon.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Grade = new HashSet<Grade>();
             this.Journal = new HashSet<Journal>();
+            this.Grade = new HashSet<Grade>();
         }
     
         public int Id { get; set; }
-        public string Fname { get; set; }
         public string Lname { get; set; }
+        public string Fname { get; set; }
         public string Patronymic { get; set; }
         public System.DateTime Birthday { get; set; }
         public int IdGroup { get; set; }
@@ -35,10 +35,10 @@ namespace KollegeKon.DB
     
         public virtual Account Account { get; set; }
         public virtual Gender Gender { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grade> Grade { get; set; }
         public virtual Group Group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Journal> Journal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grade> Grade { get; set; }
     }
 }

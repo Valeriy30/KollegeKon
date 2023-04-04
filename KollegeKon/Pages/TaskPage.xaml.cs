@@ -27,7 +27,10 @@ namespace KollegeKon.Pages
         public TaskPage()
         {
             InitializeComponent();
-            dgTask.ItemsSource = context.Task.ToList();
+           
+        
+                dgTask.ItemsSource = context.Task.ToList();
+            
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

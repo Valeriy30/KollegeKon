@@ -32,9 +32,9 @@ namespace KollegeKon.DB
         public virtual DbSet<Cabinet> Cabinet { get; set; }
         public virtual DbSet<Couple> Couple { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Grade> Grade { get; set; }
         public virtual DbSet<Group> Group { get; set; }
         public virtual DbSet<Journal> Journal { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Shedule> Shedule { get; set; }
         public virtual DbSet<Student> Student { get; set; }
@@ -45,7 +45,7 @@ namespace KollegeKon.DB
         public virtual DbSet<StudentsInGroup> StudentsInGroup { get; set; }
         public virtual DbSet<TeacherCouples> TeacherCouples { get; set; }
         public virtual DbSet<TeachersSpec> TeachersSpec { get; set; }
-        public virtual DbSet<Log> Log { get; set; }
+        public virtual DbSet<Grade> Grade { get; set; }
     
         public virtual int CountStudentInGroup(Nullable<int> group)
         {

@@ -27,10 +27,18 @@ namespace KollegeKon.Windows
         }
         private void Back_Click(object sender , RoutedEventArgs e)
         {
-           
-            RegistrationWindow reg = new RegistrationWindow();
-            reg.Show();
-            this.Close();
+            if (RoleAdmin == true)
+            {
+                RegistrationWindow reg = new RegistrationWindow();
+                reg.Show();
+                this.Close();
+            }
+            else
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
         }
     }
 }

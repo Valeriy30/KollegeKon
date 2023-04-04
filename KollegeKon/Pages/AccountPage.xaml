@@ -16,13 +16,14 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedAccount}" 
-            ItemsSource="{Binding View}" SelectionChanged="dgAccount_SelectionChanged"
+            ItemsSource="{Binding View}" SelectionChanged="dgAccount_SelectionChanged" LoadingRow="dgAccount_LoadingRow"
          >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
                     <DataGridTextColumn Binding="{Binding Login}" Header="Логин" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Password}" Header="Пароль" Width="100"/>
                     <DataGridTextColumn Binding="{Binding IdRole}" Header="Номер роли" Width="120"/>
+                    <DataGridTextColumn Binding="{Binding IsActive}" Header="Активность" Width="120"/>
 
 
                 </DataGrid.Columns>

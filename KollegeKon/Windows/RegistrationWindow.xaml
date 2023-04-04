@@ -51,17 +51,18 @@
         </StackPanel>
         <StackPanel
             x:Name="SpDg"
-            Visibility="Hidden"
+            Visibility="Visible"
         >
         <TextBlock
                 x:Name="TbTitle"
                 Height="50"
                 Width="400"
                 Text=""
+            
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 FontSize="20"
-                Margin="10 10 10 50"
+                Margin="50"
                 TextAlignment="Center"
                 FontWeight="Bold"
                 >

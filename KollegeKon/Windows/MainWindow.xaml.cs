@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection.Emit;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Windows.Shapes;
 using KollegeKon.ClassHelper;
 using KollegeKon.DB;
 using KollegeKon.Pages;
+using KollegeKon.Windows;
 using static System.Net.Mime.MediaTypeNames;
 using static KollegeKon.ClassHelper.EFClass;
 
@@ -46,7 +48,7 @@ namespace KollegeKon
         private void Window_Closed(object sender, EventArgs e)
         {
             Log log = new Log();
-            log.Date = Date;
+            log.Date = Convert.ToString(Date);
             log.LogInTime = Login.ToString().Substring(0,8);
             log.LogOutTime = DateTime.Now.TimeOfDay.ToString().Substring(0, 8);
             log.TimeSpent = (DateTime.Now.TimeOfDay - Login).ToString().Substring(1, 7);
@@ -75,7 +77,18 @@ namespace KollegeKon
             }
         }
 
-       
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizationWindow authorization = new AuthorizationWindow();
+            this.Close();
+            authorization.Show();
+        }
+        private void Statka_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticsWindow statka = new StatisticsWindow();
+            statka.Show();
+            this.Close();
+        }
     }
     
 }

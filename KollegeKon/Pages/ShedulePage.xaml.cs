@@ -31,6 +31,10 @@ namespace KollegeKon.Pages
                 dgShedule.ItemsSource = context.Shedule.Where(i => i.IdGroup == context.Group.Where(o => o.Id == context.Student.Where(p => p.Id == IdAuthorization).FirstOrDefault().IdGroup).FirstOrDefault().Id).ToList() ;
                 wpAdmin.Visibility = Visibility.Hidden;
             }
+            else 
+            {
+                dgShedule.ItemsSource = context.Shedule.ToList();
+            }
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

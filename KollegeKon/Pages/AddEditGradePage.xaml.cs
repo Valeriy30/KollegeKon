@@ -33,7 +33,7 @@ namespace KollegeKon.Pages
 
 
                 grade.Id = context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Id;
-                tbGrade.Text = Convert.ToString(context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Grade1);
+                tbGrade.Text = Convert.ToString(context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().Mark);
                 tbCouple.Text = Convert.ToString(context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().IdCouple);
                 tbStudent.Text = Convert.ToString(context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().IdStudent);
                 tbTeacher.Text = Convert.ToString(context.Grade.ToList().Where(i => i.Id == Idchange).FirstOrDefault().IdTeacher);
@@ -69,7 +69,7 @@ namespace KollegeKon.Pages
             {
 
 
-                grade.Grade1 = Convert.ToInt32( tbGrade.Text);
+                grade.Mark = Convert.ToInt32( tbGrade.Text);
                 grade.IdTeacher = Convert.ToInt32(tbTeacher.Text);
                 grade.IdCouple = Convert.ToInt32(tbCouple.Text);
                 grade.IdStudent = Convert.ToInt32(tbStudent.Text);
@@ -81,7 +81,7 @@ namespace KollegeKon.Pages
             else
             {
 
-                grade.Grade1 = Convert.ToInt32(tbGrade.Text);
+                grade.Mark = Convert.ToInt32(tbGrade.Text);
                 grade.IdTeacher = Convert.ToInt32(tbTeacher.Text);
                 grade.IdCouple = Convert.ToInt32(tbCouple.Text);
                 grade.IdStudent = Convert.ToInt32(tbStudent.Text);

@@ -26,8 +26,15 @@ namespace KollegeKon.Pages
         public GradePage()
         {
             InitializeComponent();
-            dgGrade.ItemsSource = context.Grade.Where(i => i.IdStudent==IdAuthorization).ToList();
-
+            if (RoleAdmin == false)
+            {
+                dgGrade.ItemsSource = context.Grade.Where(i => i.IdStudent== context.Student.Where(o => o.IdAccount==IdAuthorization).FirstOrDefault().Id).ToList();
+                wpAdmin.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                dgGrade.ItemsSource = context.Grade.ToList();
+            }
         }
 
 
@@ -66,11 +73,7 @@ namespace KollegeKon.Pages
             }
         }
 
-        private void dgGrade_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            TextBlock tbCH = dgGrade.Columns[0].GetCellContent(dgGrade.Items[dgGrade.SelectedIndex]) as TextBlock;
-            Idchange = Convert.ToInt32(tbCH.Text);
-        }
+       
     }
     
 }

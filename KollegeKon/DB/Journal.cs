@@ -19,7 +19,7 @@ namespace KollegeKon.DB
         public int IdGrade { get; set; }
     
         public virtual Couple Couple { get; set; }
-        public virtual Grade Grade { get; set; }
         public virtual Student Student { get; set; }
+        public virtual Grade Grade { get; set; }
     }
 }

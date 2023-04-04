@@ -143,7 +143,7 @@ namespace KollegeKon.Windows
         private void Window_Closed(object sender, EventArgs e)
         {
             Log log = new Log();
-            log.Date = Date;
+            log.Date = Convert.ToString(Date);
             log.LogInTime = Login.ToString().Substring(0, 8);
             log.LogOutTime = DateTime.Now.TimeOfDay.ToString().Substring(0, 8);
             log.TimeSpent = (DateTime.Now.TimeOfDay - Login).ToString().Substring(1, 7);

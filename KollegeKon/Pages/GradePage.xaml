@@ -16,11 +16,11 @@
         Width="600"
         Margin="0 0 0 10"  
          AutoGenerateColumns="False" SelectedItem="{Binding SelectedGrade}" 
-            ItemsSource="{Binding View}" SelectionChanged="dgGrade_SelectionChanged"
+            ItemsSource="{Binding View}" 
          >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="Номер" Width="50"/>
-                    <DataGridTextColumn Binding="{Binding Grade.Grade}" Header="Оценка" Width="70"/>
+                    <DataGridTextColumn Binding="{Binding Mark}" Header="Оценка" Width="70"/>
                     <DataGridTextColumn Binding="{Binding IdCouple}" Header="Номер пары" Width="90"/>
                     <DataGridTextColumn Binding="{Binding IdStudent}" Header="Номер студента" Width="100"/>
                     <DataGridTextColumn Binding="{Binding IdTeacher}" Header="Номер учителя" Width="150"/>

@@ -65,7 +65,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Grade" Type="int" Nullable="false" />
+          <Property Name="Mark" Type="int" Nullable="false" />
           <Property Name="IdCouple" Type="int" Nullable="false" />
           <Property Name="IdStudent" Type="int" Nullable="false" />
           <Property Name="IdTeacher" Type="int" Nullable="false" />
@@ -93,7 +93,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LogInTime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LogOutTime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TimeSpent" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -205,6 +205,11 @@
           <Property Name="Aparatment" Type="nvarchar" MaxLength="50" />
           <Property Name="Группа" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Kollege.dbo.TaskGroup" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="TaskGroup">
+          <Property Name="Домашнее задание" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "Kollege.dbo.TeacherCouples" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="TeacherCouples">
@@ -758,9 +763,9 @@
           <EntitySet Name="Cabinet" EntityType="KollegeModel.Cabinet" />
           <EntitySet Name="Couple" EntityType="KollegeModel.Couple" />
           <EntitySet Name="Gender" EntityType="KollegeModel.Gender" />
-          <EntitySet Name="Grade" EntityType="KollegeModel.Grade" />
           <EntitySet Name="Group" EntityType="KollegeModel.Group" />
           <EntitySet Name="Journal" EntityType="KollegeModel.Journal" />
+          <EntitySet Name="Log" EntityType="KollegeModel.Log" />
           <EntitySet Name="Role" EntityType="KollegeModel.Role" />
           <EntitySet Name="Shedule" EntityType="KollegeModel.Shedule" />
           <EntitySet Name="Student" EntityType="KollegeModel.Student" />
@@ -774,6 +779,10 @@
           <AssociationSet Name="FK_Account_Role" Association="KollegeModel.FK_Account_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_Account" Association="KollegeModel.FK_Log_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Log" EntitySet="Log" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Account" Association="KollegeModel.FK_Student_Account">
             <End Role="Account" EntitySet="Account" />
@@ -795,10 +804,6 @@
             <End Role="Teacher" EntitySet="Teacher" />
             <End Role="Couple" EntitySet="Couple" />
           </AssociationSet>
-          <AssociationSet Name="FK__Grade__IdCouple__5535A963" Association="KollegeModel.FK__Grade__IdCouple__5535A963">
-            <End Role="Couple" EntitySet="Couple" />
-            <End Role="Grade" EntitySet="Grade" />
-          </AssociationSet>
           <AssociationSet Name="FK__Journal__IdCoupl__59FA5E80" Association="KollegeModel.FK__Journal__IdCoupl__59FA5E80">
             <End Role="Couple" EntitySet="Couple" />
             <End Role="Journal" EntitySet="Journal" />
@@ -814,18 +819,6 @@
           <AssociationSet Name="FK__Teacher__IdGende__398D8EEE" Association="KollegeModel.FK__Teacher__IdGende__398D8EEE">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Teacher" EntitySet="Teacher" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Grade__IdStudent__5629CD9C" Association="KollegeModel.FK__Grade__IdStudent__5629CD9C">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Grade" EntitySet="Grade" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Grade__IdTeacher__571DF1D5" Association="KollegeModel.FK__Grade__IdTeacher__571DF1D5">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Grade" EntitySet="Grade" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Journal__IdGrade__5BE2A6F2" Association="KollegeModel.FK__Journal__IdGrade__5BE2A6F2">
-            <End Role="Grade" EntitySet="Grade" />
-            <End Role="Journal" EntitySet="Journal" />
           </AssociationSet>
           <AssociationSet Name="FK__Shedule__IdGroup__52593CB8" Association="KollegeModel.FK__Shedule__IdGroup__52593CB8">
             <End Role="Group" EntitySet="Group" />
@@ -847,10 +840,22 @@
             <End Role="Couple" EntitySet="Couple" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <EntitySet Name="Log" EntityType="KollegeModel.Log" />
-          <AssociationSet Name="FK_Log_Account" Association="KollegeModel.FK_Log_Account">
-            <End Role="Account" EntitySet="Account" />
-            <End Role="Log" EntitySet="Log" />
+          <EntitySet Name="Grade" EntityType="KollegeModel.Grade" />
+          <AssociationSet Name="FK__Grade__IdCouple__5535A963" Association="KollegeModel.FK__Grade__IdCouple__5535A963">
+            <End Role="Couple" EntitySet="Couple" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdStudent__5629CD9C" Association="KollegeModel.FK__Grade__IdStudent__5629CD9C">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Grade__IdTeacher__571DF1D5" Association="KollegeModel.FK__Grade__IdTeacher__571DF1D5">
+            <End Role="Teacher" EntitySet="Teacher" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Journal__IdGrade__5BE2A6F2" Association="KollegeModel.FK__Journal__IdGrade__5BE2A6F2">
+            <End Role="Grade" EntitySet="Grade" />
+            <End Role="Journal" EntitySet="Journal" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="InfAboutCouples_Result">
@@ -903,9 +908,9 @@
           <Property Name="TimeOnsystem" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="KollegeModel.FK_Account_Role" FromRole="Account" ToRole="Role" />
+          <NavigationProperty Name="Log" Relationship="KollegeModel.FK_Log_Account" FromRole="Account" ToRole="Log" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK_Student_Account" FromRole="Account" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Account" ToRole="Teacher" />
-          <NavigationProperty Name="Log" Relationship="KollegeModel.FK_Log_Account" FromRole="Account" ToRole="Log" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -939,10 +944,10 @@
           <Property Name="IdCabinet" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cabinet" Relationship="KollegeModel.FK__Couple__IdCabine__4AB81AF0" FromRole="Couple" ToRole="Cabinet" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Couple__IdTeache__49C3F6B7" FromRole="Couple" ToRole="Teacher" />
-          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Couple" ToRole="Grade" />
           <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdCoupl__59FA5E80" FromRole="Couple" ToRole="Journal" />
           <NavigationProperty Name="Shedule" Relationship="KollegeModel.FK__Shedule__IdCoupl__5165187F" FromRole="Couple" ToRole="Shedule" />
           <NavigationProperty Name="Task" Relationship="KollegeModel.CoupleTask" FromRole="Couple" ToRole="Task" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Couple" ToRole="Grade" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -952,20 +957,6 @@
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Student__IdGende__3F466844" FromRole="Gender" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Teacher__IdGende__398D8EEE" FromRole="Gender" ToRole="Teacher" />
-        </EntityType>
-        <EntityType Name="Grade">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Grade1" Type="Int32" Nullable="false" />
-          <Property Name="IdCouple" Type="Int32" Nullable="false" />
-          <Property Name="IdStudent" Type="Int32" Nullable="false" />
-          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Grade" ToRole="Couple" />
-          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Grade" ToRole="Student" />
-          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Grade" ToRole="Teacher" />
-          <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Grade" ToRole="Journal" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -987,8 +978,21 @@
           <Property Name="IdStudent" Type="Int32" Nullable="false" />
           <Property Name="IdGrade" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Journal__IdCoupl__59FA5E80" FromRole="Journal" ToRole="Couple" />
-          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Journal" ToRole="Grade" />
           <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Journal__IdStude__5AEE82B9" FromRole="Journal" ToRole="Student" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Journal" ToRole="Grade" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogInTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogOutTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSpent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnsuccesfulLogOut" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdAccount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Log_Account" FromRole="Log" ToRole="Account" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1014,8 +1018,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IdGroup" Type="Int32" Nullable="false" />
@@ -1026,9 +1030,9 @@
           <Property Name="IdAccount" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Student_Account" FromRole="Student" ToRole="Account" />
           <NavigationProperty Name="Gender" Relationship="KollegeModel.FK__Student__IdGende__3F466844" FromRole="Student" ToRole="Gender" />
-          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Student" ToRole="Grade" />
           <NavigationProperty Name="Group" Relationship="KollegeModel.FK__Student__IdGroup__3E52440B" FromRole="Student" ToRole="Group" />
           <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdStude__5AEE82B9" FromRole="Student" ToRole="Journal" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Student" ToRole="Grade" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1055,8 +1059,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Lname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Speciality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1068,8 +1072,8 @@
           <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Teacher_Account" FromRole="Teacher" ToRole="Account" />
           <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Couple__IdTeache__49C3F6B7" FromRole="Teacher" ToRole="Couple" />
           <NavigationProperty Name="Gender" Relationship="KollegeModel.FK__Teacher__IdGende__398D8EEE" FromRole="Teacher" ToRole="Gender" />
-          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Teacher" ToRole="Grade" />
           <NavigationProperty Name="Task" Relationship="KollegeModel.FK__Task__IdTeacher__46E78A0C" FromRole="Teacher" ToRole="Task" />
+          <NavigationProperty Name="Grade" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Teacher" ToRole="Grade" />
         </EntityType>
         <EntityType Name="CurrentMonthBirthStud">
           <Key>
@@ -1155,6 +1159,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Log_Account">
+          <End Type="KollegeModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="KollegeModel.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="IdAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Student_Account">
           <End Type="KollegeModel.Account" Role="Account" Multiplicity="0..1" />
           <End Type="KollegeModel.Student" Role="Student" Multiplicity="*" />
@@ -1215,18 +1231,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Grade__IdCouple__5535A963">
-          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
-          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Couple">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Grade">
-              <PropertyRef Name="IdCouple" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Journal__IdCoupl__59FA5E80">
           <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
           <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
@@ -1272,42 +1276,6 @@
             </Principal>
             <Dependent Role="Teacher">
               <PropertyRef Name="IdGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Grade__IdStudent__5629CD9C">
-          <End Type="KollegeModel.Student" Role="Student" Multiplicity="1" />
-          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Grade">
-              <PropertyRef Name="IdStudent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Grade__IdTeacher__571DF1D5">
-          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="1" />
-          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Grade">
-              <PropertyRef Name="IdTeacher" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Journal__IdGrade__5BE2A6F2">
-          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="1" />
-          <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Grade">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Journal">
-              <PropertyRef Name="IdGrade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1363,28 +1331,65 @@
           <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="*" />
           <End Type="KollegeModel.Task" Role="Task" Multiplicity="*" />
         </Association>
-        <EntityType Name="Log">
+        <EntityType Name="Grade">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="LogInTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LogOutTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TimeSpent" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UnsuccesfulLogOut" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IdAccount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="KollegeModel.FK_Log_Account" FromRole="Log" ToRole="Account" />
+          <Property Name="Mark" Type="Int32" Nullable="false" />
+          <Property Name="IdCouple" Type="Int32" Nullable="false" />
+          <Property Name="IdStudent" Type="Int32" Nullable="false" />
+          <Property Name="IdTeacher" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Couple" Relationship="KollegeModel.FK__Grade__IdCouple__5535A963" FromRole="Grade" ToRole="Couple" />
+          <NavigationProperty Name="Student" Relationship="KollegeModel.FK__Grade__IdStudent__5629CD9C" FromRole="Grade" ToRole="Student" />
+          <NavigationProperty Name="Teacher" Relationship="KollegeModel.FK__Grade__IdTeacher__571DF1D5" FromRole="Grade" ToRole="Teacher" />
+          <NavigationProperty Name="Journal" Relationship="KollegeModel.FK__Journal__IdGrade__5BE2A6F2" FromRole="Grade" ToRole="Journal" />
         </EntityType>
-        <Association Name="FK_Log_Account">
-          <End Type="KollegeModel.Account" Role="Account" Multiplicity="1" />
-          <End Type="KollegeModel.Log" Role="Log" Multiplicity="*" />
+        <Association Name="FK__Grade__IdCouple__5535A963">
+          <End Type="KollegeModel.Couple" Role="Couple" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Account">
+            <Principal Role="Couple">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Log">
-              <PropertyRef Name="IdAccount" />
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdCouple" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdStudent__5629CD9C">
+          <End Type="KollegeModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Grade__IdTeacher__571DF1D5">
+          <End Type="KollegeModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="IdTeacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Journal__IdGrade__5BE2A6F2">
+          <End Type="KollegeModel.Grade" Role="Grade" Multiplicity="1" />
+          <End Type="KollegeModel.Journal" Role="Journal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Journal">
+              <PropertyRef Name="IdGrade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1511,17 +1516,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Grade">
-            <EntityTypeMapping TypeName="KollegeModel.Grade">
-              <MappingFragment StoreEntitySet="Grade">
-                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
-                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
-                <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
-                <ScalarProperty Name="Grade1" ColumnName="Grade" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Group">
             <EntityTypeMapping TypeName="KollegeModel.Group">
               <MappingFragment StoreEntitySet="Group">
@@ -1537,6 +1531,19 @@
                 <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
                 <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
                 <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="KollegeModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+                <ScalarProperty Name="UnsuccesfulLogOut" ColumnName="UnsuccesfulLogOut" />
+                <ScalarProperty Name="TimeSpent" ColumnName="TimeSpent" />
+                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1568,8 +1575,8 @@
                 <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1605,8 +1612,8 @@
                 <ScalarProperty Name="Speciality" ColumnName="Speciality" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1672,15 +1679,13 @@
               <ScalarProperty Name="Id" ColumnName="IdCouple" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Log">
-            <EntityTypeMapping TypeName="KollegeModel.Log">
-              <MappingFragment StoreEntitySet="Log">
-                <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
-                <ScalarProperty Name="UnsuccesfulLogOut" ColumnName="UnsuccesfulLogOut" />
-                <ScalarProperty Name="TimeSpent" ColumnName="TimeSpent" />
-                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
-                <ScalarProperty Name="LogInTime" ColumnName="LogInTime" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
+          <EntitySetMapping Name="Grade">
+            <EntityTypeMapping TypeName="KollegeModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="IdTeacher" ColumnName="IdTeacher" />
+                <ScalarProperty Name="IdStudent" ColumnName="IdStudent" />
+                <ScalarProperty Name="IdCouple" ColumnName="IdCouple" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

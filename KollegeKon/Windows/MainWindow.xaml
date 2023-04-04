@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KollegeKon"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1000" Closed="Window_Closed">
+        Title="MainWindow" Height="800" Width="1000" Closed="Window_Closed" Background="#FFF4F5E0">
     <Grid>
         <StackPanel>
         <Menu
@@ -15,7 +15,9 @@
                 <MenuItem Height="40"  Header="Оценки" Click="MenuItem_Click" ></MenuItem>
                 <MenuItem Height="40"  Header="Расписание" Click="MenuItem_Click" ></MenuItem>
             </MenuItem>
-            <MenuItem Height="40"  Header="Выход" ></MenuItem>
+                <MenuItem Height="40"  Header="Статистика" Click="Statka_Click" ></MenuItem>
+                <MenuItem Height="40"  Header="Выход" Click="Back_Click" ></MenuItem>
+            
             
         </Menu>
             <Label 
@@ -31,6 +33,8 @@
                x:Name="lbTime"
                Height="30"
                Width="150"
+                
+               HorizontalContentAlignment="Center"
                HorizontalAlignment="Right"
                VerticalAlignment="Top">
             

@@ -3,6 +3,7 @@ using KollegeKon.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -70,6 +71,15 @@ namespace KollegeKon.Pages
         {
             TextBlock tbCH = dgAccount.Columns[0].GetCellContent(dgAccount.Items[dgAccount.SelectedIndex]) as TextBlock;
             Idchange = Convert.ToInt32(tbCH.Text);
+        }
+        private void dgAccount_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            var Reason = true;
+
+            if (e.Row.GetIndex() <= context.Account.ToList().Count() - 1) Reason = context.Account.ToList().ElementAtOrDefault(e.Row.GetIndex()).IsActive;
+
+            if (Reason == false) e.Row.Background = new SolidColorBrush(Colors.Red);
+            else e.Row.Background = new SolidColorBrush(Colors.White);
         }
     }
 }

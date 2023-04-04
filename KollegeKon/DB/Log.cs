@@ -15,7 +15,7 @@ namespace KollegeKon.DB
     public partial class Log
     {
         public int Id { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
         public string LogInTime { get; set; }
         public string LogOutTime { get; set; }
         public string TimeSpent { get; set; }

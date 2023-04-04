@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KollegeKon.Windows"
         mc:Ignorable="d"
-        Title="StatisticsWindow" Height="450" Width="800">
+        Title="StatisticsWindow" Height="450" Width="800"  Background="#FFF4F5E0">
     <Grid>
         <StackPanel>
             <Button
@@ -22,11 +22,11 @@
         Height="350"
         Width="700"
         Margin="0 0 0 10"  
-         AutoGenerateColumns="False" SelectedItem="{Binding SelectedCouple}" 
+         AutoGenerateColumns="False" SelectedItem="{Binding SelectedLog}" 
             ItemsSource="{Binding View}" 
          >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Data}" Header="Дата" Width="50"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="Дата" Width="50"/>
                 <DataGridTextColumn Binding="{Binding LogInTime}" Header="Время входа" Width="100"/>
                 <DataGridTextColumn Binding="{Binding LogOutTime}" Header="Время выхода" Width="100"/>
                 <DataGridTextColumn Binding="{Binding TimeSpent}" Header="Время в системе" Width="110"/>

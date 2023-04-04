@@ -21,7 +21,7 @@ namespace KollegeKon.DB
         }
     
         public int Id { get; set; }
-        public int Grade1 { get; set; }
+        public int Mark { get; set; }
         public int IdCouple { get; set; }
         public int IdStudent { get; set; }
         public int IdTeacher { get; set; }
